@@ -156,7 +156,7 @@ class _EasyLevelState extends State<EasyLevel>
       padding: EdgeInsets.only(top: 100),
       child: Align(
         alignment: Alignment.topCenter,
-            child: Text('Level : Easy',style: (Theme.of(context).textTheme.headline, color : Colors.green)),
+            child: Text('Level : Easy',style: (Theme.of(context).textTheme.headline)),
         ),
       );
   }

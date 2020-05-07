@@ -18,7 +18,7 @@ Route<dynamic> generateRoute (RouteSettings settings){
     case 'level3':
       return MaterialPageRoute(builder: (context) => HardLevel());
     case 'score':
-      return MaterialPageRoute(builder: (context) => score());
+      return MaterialPageRoute(builder: (context) => Score());
     case 'fruit':
       return MaterialPageRoute(builder: (context) => fruitName());
   }
