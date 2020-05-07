@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:fruits_vegetables/easyLevel.dart';
+import 'package:fruits_vegetables/easy_level.dart';
 import 'package:fruits_vegetables/fruitName.dart';
-import 'package:fruits_vegetables/hardLevel.dart';
-import 'package:fruits_vegetables/home.dart';
-import 'package:fruits_vegetables/mediumLevel.dart';
+import 'package:fruits_vegetables/hard_level.dart';
+import 'package:fruits_vegetables/home_page.dart';
+import 'package:fruits_vegetables/medium_level.dart';
 import 'package:fruits_vegetables/score.dart';
 
+// ignore: missing_return
 Route<dynamic> generateRoute (RouteSettings settings){
   switch (settings.name){
     case '/':
-      return MaterialPageRoute(builder: (context) => home());
+      return MaterialPageRoute(builder: (context) => HomePage());
     case 'level1':
-      return MaterialPageRoute(builder: (context) => easyLevel());
-    case '/level2':
-      return MaterialPageRoute(builder: (context) => mediumLevel());
+      return MaterialPageRoute(builder: (context) => EasyLevel());
+    case 'level2':
+      return MaterialPageRoute(builder: (context) => MediumLevel());
     case 'level3':
-      return MaterialPageRoute(builder: (context) => hardLevel());
+      return MaterialPageRoute(builder: (context) => HardLevel());
     case 'score':
       return MaterialPageRoute(builder: (context) => score());
     case 'fruit':

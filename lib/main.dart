@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_vegetables/theme.dart';
-import 'home.dart';
 import 'router.dart' as router;
 
 void main() {

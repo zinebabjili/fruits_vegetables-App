@@ -6,7 +6,7 @@ ThemeData basicTheme(){
       //for name of levels and result score
       headline: base.headline.copyWith(
         fontFamily: 'OpenSans-Bold',
-        fontSize: 40,
+        fontSize: 30,
         color: Colors.black,
       ),
       //for name of buttons
