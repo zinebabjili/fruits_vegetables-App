@@ -92,27 +92,29 @@ class _ScoreState extends State<Score> {
               ),
             ),
             //title score
-            Text("Votre Score",
-            style: TextStyle(
-              fontFamily: 'OpenSans-Bold',
-              fontSize: 40,
-              height: 1.2,
-              fontWeight: FontWeight.w600,
-              color: Colors.red,
-
+            Text(
+              "Votre Score",
+              style: TextStyle(
+                fontFamily: 'OpenSans-Bold',
+                fontSize: 40,
+                height: 1.2,
+                fontWeight: FontWeight.w600,
+                color: Colors.red,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,),
             // pourcantage score
-            Text("100 %",
-            style: TextStyle(
-              fontFamily: 'OpenSans-Bold',
-              fontSize: 40,
-              height: 1.2,
-              fontWeight: FontWeight.w600,
-              color: Colors.red,
-
+            Text(
+              "100 %",
+              style: TextStyle(
+                fontFamily: 'OpenSans-Bold',
+                fontSize: 40,
+                height: 1.2,
+                fontWeight: FontWeight.w600,
+                color: Colors.red,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,),
             SizedBox(height: 10),
             // list of suggested
             Container(
@@ -145,24 +147,27 @@ class _ScoreState extends State<Score> {
             ),
             SizedBox(height: 10),
             RaisedButton(
-              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5.0)),
-              color: Colors.red,
-            child: Text('Rejouer', style: TextStyle(
-              fontFamily: 'OpenSans-Bold',
-              fontSize: 30,
-              color: Colors.white,
-            )),
-            onPressed: () {}
-            ),
+                shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(5.0)),
+                color: Colors.red,
+                child: Text('Rejouer',
+                    style: TextStyle(
+                      fontFamily: 'OpenSans-Bold',
+                      fontSize: 30,
+                      color: Colors.white,
+                    )),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/');
+                }),
             SizedBox(height: 10),
             OutlineButton(
-                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(5.0)),
-                textColor: Colors.red,
-                child: Text('Choisir Un Niveau'),
-                borderSide: BorderSide(
-                    color: Colors.red, style: BorderStyle.solid, 
-                    width: 2),
-                onPressed: () {},
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(5.0)),
+              textColor: Colors.red,
+              child: Text('Choisir Un Niveau'),
+              borderSide: BorderSide(
+                  color: Colors.red, style: BorderStyle.solid, width: 2),
+              onPressed: () {},
             )
           ],
         )),

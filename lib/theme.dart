@@ -37,9 +37,9 @@ ThemeData basicTheme(){
     canvasColor: Colors.red,
     textTheme: _basicTextTheme(base.textTheme),
     buttonTheme: ButtonThemeData(
-      buttonColor: Colors.yellow,
-      height: 45,
-      minWidth: 300
+        buttonColor: Colors.yellow,
+        height: 45,
+        minWidth: 300
     ),
   );
 }

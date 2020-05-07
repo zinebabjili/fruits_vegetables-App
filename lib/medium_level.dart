@@ -71,7 +71,8 @@ class _MediumLevelState extends State<MediumLevel>
                   _buildGo(),
                   _buildResult(_value),
                   _buildButton(),
-                  _buildText()
+                  _buildText(),
+                  _buildBtnBack()
                 ],
               );
             }),
@@ -94,10 +95,10 @@ class _MediumLevelState extends State<MediumLevel>
           alignment: Alignment.center,
           height: 72,
           width: 72,
-          /*child: Text(
+          child: Text(
             "GO",
             style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold),
-          ),*/
+          ),
         ),
         onTap: _animation,
       ),
@@ -127,10 +128,20 @@ class _MediumLevelState extends State<MediumLevel>
     //String _asset = _items[_index].asset;
     String _asset = _items[_index].alphabet;
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 100.0),
+      padding: EdgeInsets.symmetric(vertical: 85.0),
       child: Align(
         alignment: Alignment.bottomCenter,
-        child: Text(_asset, style: Theme.of(context).textTheme.headline),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 50, vertical: 14),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(5),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(color: Colors.grey, blurRadius: 5.0, spreadRadius: 2),
+            ],
+          ),
+          child: Text(_asset, style: Theme.of(context).textTheme.headline),
+        ),
       ),
     );
   }
@@ -142,11 +153,10 @@ class _MediumLevelState extends State<MediumLevel>
         alignment: Alignment.bottomCenter,
         child: RaisedButton(
             color: Colors.yellow,
-            child: Text('Start',style: Theme.of(context).textTheme.button),
-            onPressed: (){
+            child: Text('Commencer', style: Theme.of(context).textTheme.button),
+            onPressed: () {
               Navigator.of(context).pushNamed('');
-            }
-        ),
+            }),
       ),
     );
   }
@@ -156,14 +166,34 @@ class _MediumLevelState extends State<MediumLevel>
       padding: EdgeInsets.only(top: 100),
       child: Align(
         alignment: Alignment.topCenter,
-        child: Text('Level : Medium',style: Theme.of(context).textTheme.headline),
+        child:
+            Text('Niveau : Moyen', style: Theme.of(context).textTheme.headline),
+      ),
+    );
+  }
+
+  _buildBtnBack() {
+    return Container(
+      child: Align(
+        alignment: Alignment.topLeft,
+        child: Padding(
+          padding: EdgeInsets.only(top: 50, left:30 ),
+          child: RotatedBox(
+            quarterTurns: 2,
+            child: IconButton(
+              icon: Icon(
+                  Icons.play_circle_filled, color: Colors.yellow, size: 60
+              ),
+              onPressed: (){
+                Navigator.of(context).pushNamed('/');
+              },
+            ),
+          ),
+        ),
       ),
     );
   }
 }
-
-
-
 
 /*import 'dart:math';
 import 'package:flutter/material.dart';
