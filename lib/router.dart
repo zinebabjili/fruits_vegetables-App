@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_vegetables/easy_level.dart';
-import 'package:fruits_vegetables/fruitName.dart';
+import 'package:fruits_vegetables/Fruitlegumes.dart';
 import 'package:fruits_vegetables/hard_level.dart';
 import 'package:fruits_vegetables/home_page.dart';
 import 'package:fruits_vegetables/medium_level.dart';
@@ -20,6 +20,6 @@ Route<dynamic> generateRoute (RouteSettings settings){
     case 'score':
       return MaterialPageRoute(builder: (context) => Score());
     case 'fruit':
-      return MaterialPageRoute(builder: (context) => fruitName());
+      return MaterialPageRoute(builder: (context) => Fruitlegumes());
   }
 }

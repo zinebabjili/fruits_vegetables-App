@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'board_view_easy.dart';
 import 'model.dart';
+import 'Fruitlegumes.dart';
 
 class EasyLevel extends StatefulWidget {
   @override
@@ -155,7 +156,12 @@ class _EasyLevelState extends State<EasyLevel>
             color: Colors.green,
             child: Text('Commencer', style: Theme.of(context).textTheme.button),
             onPressed: () {
-              Navigator.of(context).pushNamed('');
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => Fruitlegumes(),
+                ),
+              );
+              /*Navigator.of(context).pushNamed('/Fruitlegumes');*/
             }),
       ),
     );

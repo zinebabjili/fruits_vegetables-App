@@ -45,6 +45,12 @@ flutter:
     - images/spin.png
     - assets/img/logo.jpg
     - assets/img/signs.jpg
+    - images/animal.jpg
+    - images/capital.jpg
+    - images/fruit.jpg
+    - images/legume.jpg
+    - images/metier.jpg
+    - images/pays.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
