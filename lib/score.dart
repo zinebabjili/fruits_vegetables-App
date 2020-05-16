@@ -1,18 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_vegetables/level.dart';
+
+import 'home_page.dart';
 
 // ignore: camel_case_types
 class Score extends StatefulWidget {
+  final Color color;
+  final String level;
+  final List<String> reponse;
+
+  const Score({Key key, this.color, this.level, this.reponse}) : super(key: key);
   @override
-  _ScoreState createState() => _ScoreState();
+  _ScoreState createState() => _ScoreState(reponse:this.reponse);
 }
 
 class _ScoreState extends State<Score> {
-  List<String> _listAddresses;
-
+  List<String> reponse;
+  _ScoreState({Key key,  this.reponse});
+  List<String> _listSuggestions;
+  double score = 0;
   @override
   void initState() {
     super.initState();
-    _listAddresses = [
+    for (var i = 0; i < reponse.length; i++) {
+      if(reponse[i] != ""){
+        score++;
+      }
+    }
+    _listSuggestions = [
       "tajine 3amer mekla",
       "tajine seghira walkin bnine",
       "warah bnine",
@@ -24,6 +39,7 @@ class _ScoreState extends State<Score> {
   Widget build(BuildContext context) {
     Size _size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(
             child: Column(
@@ -32,7 +48,7 @@ class _ScoreState extends State<Score> {
               padding: const EdgeInsets.only(bottom: 10.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: Theme.of(context).canvasColor,
+                  color: widget.color,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(
                       _size.height * 0.25,
@@ -56,8 +72,7 @@ class _ScoreState extends State<Score> {
                         padding: EdgeInsets.all(10.0),
                         child: RotatedBox(
                           quarterTurns: 2,
-                          child: Icon(Icons.play_circle_filled,
-                              color: Colors.white, size: 60),
+                          child: SizedBox(height: 60,),
                         ),
                       ),
                     ),
@@ -99,19 +114,19 @@ class _ScoreState extends State<Score> {
                 fontSize: 40,
                 height: 1.2,
                 fontWeight: FontWeight.w600,
-                color: Colors.red,
+                color: widget.color,
               ),
               textAlign: TextAlign.center,
             ),
             // pourcantage score
             Text(
-              "100 %",
+              double.parse((score*100/6).toStringAsFixed(2)).toString()+" %",
               style: TextStyle(
                 fontFamily: 'OpenSans-Bold',
                 fontSize: 40,
                 height: 1.2,
                 fontWeight: FontWeight.w600,
-                color: Colors.red,
+                color: widget.color,
               ),
               textAlign: TextAlign.center,
             ),
@@ -123,7 +138,7 @@ class _ScoreState extends State<Score> {
                   controller: new ScrollController(keepScrollOffset: false),
                   shrinkWrap: true,
                   scrollDirection: Axis.vertical,
-                  itemCount: _listAddresses.length,
+                  itemCount: _listSuggestions.length,
                   itemBuilder: (BuildContext context, int index) {
                     return Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -131,7 +146,7 @@ class _ScoreState extends State<Score> {
                         children: <Widget>[
                           Expanded(
                             child: Text(
-                              _listAddresses[index],
+                              _listSuggestions[index],
                               style: new TextStyle(
                                 height: 1.5,
                                 fontSize: 16.0,
@@ -149,7 +164,7 @@ class _ScoreState extends State<Score> {
             RaisedButton(
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(5.0)),
-                color: Colors.red,
+                color: widget.color,
                 child: Text('Rejouer',
                     style: TextStyle(
                       fontFamily: 'OpenSans-Bold',
@@ -157,17 +172,25 @@ class _ScoreState extends State<Score> {
                       color: Colors.white,
                     )),
                 onPressed: () {
-                  Navigator.of(context).pushNamed('/');
+                  Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => EasyLevel(color:widget.color,level: widget.level ,),
+                ),);
                 }),
             SizedBox(height: 10),
             OutlineButton(
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(5.0)),
-              textColor: Colors.red,
+              textColor: widget.color,
               child: Text('Choisir Un Niveau'),
               borderSide: BorderSide(
-                  color: Colors.red, style: BorderStyle.solid, width: 2),
-              onPressed: () {},
+                  color: widget.color, style: BorderStyle.solid, width: 2),
+              onPressed: () {
+                Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => HomePage(),
+                ),);
+              },
             )
           ],
         )),
