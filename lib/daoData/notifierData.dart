@@ -88,6 +88,14 @@ class NotifierData with ChangeNotifier {
 
   Future<bool> checkSomething(int index, String label) async {
 
+    if(label == null || label == ""){
+      return false;
+    }
+    
+    if(label[0].toLowerCase() != gameStarted.lettre.toLowerCase()){
+      return false;
+    }
+
     if(index == 0){
       bool state = false;
       await repo.isCountryCorrect(label).then((value) => {

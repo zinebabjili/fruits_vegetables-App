@@ -48,21 +48,11 @@ class RepoData {
 
   Future<bool> isFruitCorrect(String fruit) async {
 
-    print("FATIMA $fruit");
-
-    // final http.Response response = await http.get(
-    //   apuiUrlFruits + fruit , 
-    //   headers: {
-    //     HttpHeaders.contentTypeHeader: 'application/json',
-    //   }
-    // );
-
     final http.Response response = await http.get( apuiUrlFruits + fruit );
     
 
     if (response.statusCode != 200) {
       // throw Exception();
-      print(response.statusCode);
       return false;
     }
 
