@@ -88,9 +88,18 @@ class NotifierData with ChangeNotifier {
 
   Future<bool> checkSomething(int index, String label) async {
 
-    if(index == 2){
+    if(index == 0){
+      bool state = false;
+      await repo.isCountryCorrect(label).then((value) => {
+        print(value),
+        state = value,
+      });
+      return state;
+    }
+    else if(index == 2){
       bool state = false;
       await repo.isCapitalCorrect(label).then((value) => {
+        print(value),
         state = value,
       });
       return state;

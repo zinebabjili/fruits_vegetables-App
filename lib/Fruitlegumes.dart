@@ -494,6 +494,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                               fillColor: (listOfElements[i].isDone)?Colors.green:Colors.white70
                           ),
                           onChanged: (value) async {
+                            print("i is $i and value is $value");
                             listOfElements[i].input = value;
                             smrGame.checkSomething(i,value).then((v) {
                               if(v == true){
