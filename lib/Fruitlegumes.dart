@@ -28,6 +28,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
   var _controllerInput = TextEditingController();
   
   var i = 0;
+  var index = 1;
+  var size = 6;
   
   int minuit = 00;
   int second = 00;
@@ -77,6 +79,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
     // this.champs = [Provider.of<NotifierData>(context, listen: false).gameStarted.animal.label];
     
     var listOfElements = Provider.of<NotifierData>(context, listen: false).gameStarted.Elements;
+    
 
     return Scaffold(
       body: SafeArea(
@@ -306,7 +309,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                               padding:
                                   const EdgeInsets.only(top: 25, right: 20),
                               child: Text(
-                                "5/6",
+                                index.toString() + "/" + size.toString(),
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 25,
@@ -534,6 +537,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
       }
       if (i < 5) {
         ++i;
+
+        ++index;
         if(reponse[i] != null ){
         _controllerInput.text=reponse[i];
       }
@@ -553,6 +558,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
       }
       if (i > 0) {
         --i;
+        --index;
         if(reponse[i] != null ){
         _controllerInput.text=reponse[i];
       }

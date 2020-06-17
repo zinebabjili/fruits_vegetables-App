@@ -22,7 +22,7 @@ class NotifierData with ChangeNotifier {
       gameStarted = new Game("medium", 3, "");
     } else if (i == 3) {
       print("LeTS PLAY D");
-      gameStarted = new Game("difficult", 2, "");
+      gameStarted = new Game("difficult", 1, "");
     }
   }
 
