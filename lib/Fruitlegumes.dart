@@ -263,7 +263,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                               ],
                                             ),
                                             child: Icon(Icons.check_circle,
-                                                color: (listOfElements[3].isDone)?Colors.green:Colors.white, 
+                                                color: (listOfElements[3].isDone)?Colors.green:Colors.white,
                                                 size: 40)),
                                       ),
                                       Padding(
@@ -280,8 +280,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                                     spreadRadius: 2),
                                               ],
                                             ),
-                                            child: Icon(Icons.brightness_1,
-                                                color: (listOfElements[4].isDone)?Colors.green:Colors.white, 
+                                            child: Icon(Icons.check_circle,
+                                                color: (listOfElements[4].isDone)?Colors.green:Colors.white,
                                                 size: 40)),
                                       ),
                                       Padding(
@@ -298,8 +298,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                                     spreadRadius: 2),
                                               ],
                                             ),
-                                            child: Icon(Icons.brightness_1,
-                                                color: (listOfElements[5].isDone)?Colors.green:Colors.white, 
+                                            child: Icon(Icons.check_circle,
+                                                color: (listOfElements[5].isDone)?Colors.green:Colors.white,
                                                 size: 40)),
                                       ),
                                     ],
@@ -591,6 +591,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
       // for (var i = 0; i < reponse.length; i++) {
       //   print("hey" + reponse[i]);
       // }
+
       if (i > 0) {
         --i;
         --index;
@@ -598,6 +599,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
           _controllerInput.text = reponse[i];
         }
       }
+
     });
   }
 }

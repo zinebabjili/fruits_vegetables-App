@@ -2,7 +2,7 @@ class Fruit{
   final String label;
   final String picture;
   final List<String> words;
-  final bool isDone;
+  bool isDone;
   String input = "";
 
 

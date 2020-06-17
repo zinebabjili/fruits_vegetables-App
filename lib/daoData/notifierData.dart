@@ -103,6 +103,13 @@ class NotifierData with ChangeNotifier {
         state = value,
       });
       return state;
+    }else if(index == 5){
+      bool state = false;
+      await repo.isFruitCorrect(label).then((value) => {
+        // print(value),
+        state = value,
+      });
+      return state;
     }else{
       return false;
     }
