@@ -149,7 +149,7 @@ class _EasyLevelState extends State<EasyLevel>
     if(_value == 0 && this.clicked == true && this.clickedButFirstTime== true){
       String letter = _asset[0];
       Provider.of<NotifierData>(context, listen: false).gameStarted.lettre = letter;
-      print(letter);
+      // print(letter);
     }
     if(_value == 0 &&  this.clicked == true){
       this.clickedButFirstTime = true;

@@ -39,8 +39,9 @@ class NotifierData with ChangeNotifier {
           "Country", "assets/img/app-countries-green.jpg", null, false);
       legumes =
           new Legume("Legume", "assets/img/app-legumes-green.jpg", null, false);
-      capitaux = new Capital(
-          "Capital", "assets/img/app-capitals-green.jpg", null, false);
+      // capitaux = new Capital(
+      //     "Capital", "assets/img/app-capitals-green.jpg", null, );
+      capitaux = new Capital("Capital", "assets/img/app-capitals-green.jpg", false);
       jobs = new Job("Job", "assets/img/app-jobs-green.jpg", null, false);
       animeaux =
           new Animal("Animal", "assets/img/app-animals-green.jpg", null, false);
@@ -51,8 +52,10 @@ class NotifierData with ChangeNotifier {
           "Country", "assets/img/app-countries-yellow.jpg", null, false);
       legumes = new Legume(
           "Legume", "assets/img/app-legumes-yellow.jpg", null, false);
-      capitaux = new Capital(
-          "Capital", "assets/img/app-capitals-yellow.jpg", null, false);
+      // capitaux = new Capital(
+      //     "Capital", "assets/img/app-capitals-yellow.jpg", null, false);
+      capitaux = new Capital("Capital", "assets/img/app-capitals-yellow.jpg", false);
+
       jobs = new Job("Job", "assets/img/app-jobs-yellow.jpg", null, false);
       animeaux = new Animal(
           "Animal", "assets/img/app-animals-yellow.jpg", null, false);
@@ -63,8 +66,9 @@ class NotifierData with ChangeNotifier {
           "Country", "assets/img/app-countries-red.jpg", null, false);
       legumes =
           new Legume("Legume", "assets/img/app-legumes-red.jpg", null, false);
-      capitaux = new Capital(
-          "Capital", "assets/img/app-capitals-red.jpg", null, false);
+      // capitaux = new Capital(
+      //     "Capital", "assets/img/app-capitals-red.jpg", null, false);
+      capitaux = new Capital("Capital", "assets/img/app-capitals-red.jpg", false);
       jobs = new Job("Job", "assets/img/app-jobs-red.jpg", null, false);
       animeaux =
           new Animal("Animal", "assets/img/app-animals-red.jpg", null, false);
@@ -80,7 +84,20 @@ class NotifierData with ChangeNotifier {
     elements.add(fruits);
 
     this.gameStarted.Elements = elements;
+  }
 
-    print(this.gameStarted);
+  Future<bool> checkSomething(int index, String label) async {
+
+    if(index == 2){
+      bool state = false;
+      await repo.isCapitalCorrect(label).then((value) => {
+        state = value,
+      });
+      return state;
+    }else{
+      return false;
+    }
+
+    
   }
 }

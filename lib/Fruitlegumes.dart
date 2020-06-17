@@ -14,33 +14,40 @@ class Fruitlegumes extends StatefulWidget {
   Fruitlegumes({Key key, this.lettre, this.level, this.color})
       : super(key: key);
   @override
-  _FruitlegumesState createState() => _FruitlegumesState(level: this.level,color:this.color,);
+  _FruitlegumesState createState() => _FruitlegumesState(
+        level: this.level,
+        color: this.color,
+      );
 }
 
 class _FruitlegumesState extends State<Fruitlegumes> {
   String level;
   Color color;
-  _FruitlegumesState({Key key,  this.level, this.color, });
+  _FruitlegumesState({
+    Key key,
+    this.level,
+    this.color,
+  });
   var champs = ["Animal", "Capital", "Fruit", "Legume", "Metier", "Pays"];
   // this.champs = [Provider.of<NotifierData>(context, listen: false).gameStarted.animal.label];
 
-  List<String> reponse = ["","","","","", ""];
+  List<String> reponse = ["", "", "", "", "", ""];
   var _controllerInput = TextEditingController();
-  
+
   var i = 0;
   var index = 1;
   var size = 6;
-  
+
   int minuit = 00;
   int second = 00;
   Timer timer;
   @override
   void initState() {
-    if(level == "Facile"){
+    if (level == "Facile") {
       minuit = 05;
-    }else if(level == "Moyen"){
+    } else if (level == "Moyen") {
       minuit = 03;
-    }else{
+    } else {
       minuit = 01;
     }
     startTimer();
@@ -52,34 +59,38 @@ class _FruitlegumesState extends State<Fruitlegumes> {
     timer.cancel();
     super.dispose();
   }
-  void startTimer(){
-    timer = Timer.periodic(Duration(seconds: 1), (Timer timer){
+
+  void startTimer() {
+    timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
       setState(() {
-        if(minuit <1 && second<1){
+        if (minuit < 1 && second < 1) {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (BuildContext context) => Score(color:color,level: level,reponse: this.reponse ,),
+                builder: (BuildContext context) => Score(
+                  color: color,
+                  level: level,
+                  reponse: this.reponse,
+                ),
               ));
-              timer.cancel();
-        }else{
-          if (second ==0){
-              minuit--;
-              second=60;
+          timer.cancel();
+        } else {
+          if (second == 0) {
+            minuit--;
+            second = 60;
           }
-        second--;
+          second--;
         }
       });
-
     });
   }
 
   @override
   Widget build(BuildContext context) {
     // this.champs = [Provider.of<NotifierData>(context, listen: false).gameStarted.animal.label];
-    
-    var listOfElements = Provider.of<NotifierData>(context, listen: false).gameStarted.Elements;
-    
+
+    var listOfElements =
+        Provider.of<NotifierData>(context, listen: false).gameStarted.Elements;
 
     return Scaffold(
       body: SafeArea(
@@ -340,7 +351,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                               child: RaisedButton(
                                 color: Colors.white,
                                 onPressed: () {
-                                  if(i != 0){
+                                  if (i != 0) {
                                     previous();
                                   }
                                 },
@@ -369,7 +380,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                 child: CircleAvatar(
                                   radius: 120.0,
                                   backgroundColor: Colors.white,
-                                  backgroundImage: AssetImage(listOfElements[i].picture),
+                                  backgroundImage:
+                                      AssetImage(listOfElements[i].picture),
                                 ),
                               ),
                             ),
@@ -377,8 +389,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                               flex: 2, // 20%
                               child: RaisedButton(
                                 color: Colors.white,
-                                onPressed:() {
-                                  if(i != 5){
+                                onPressed: () {
+                                  if (i != 5) {
                                     next();
                                   }
                                 },
@@ -441,44 +453,60 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                     ],
                   ),
                 ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
-                  child: Material(
-                    elevation: 10.0,
-                    shadowColor: Colors.blueGrey[100],
-                    borderOnForeground: false,
-                    borderRadius: const BorderRadius.all(
-                      const Radius.circular(10.0),
-                    ),
-                    color: Colors.white,
-                    child: TextFormField(
-                      controller: _controllerInput,
-                      textAlign: TextAlign.center,
-                      decoration: InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 0.0),
-                            borderRadius: const BorderRadius.all(
-                              const Radius.circular(10.0),
-                            ),
+                Consumer<NotifierData>(
+                  builder: (_, smrGame, __) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 20, horizontal: 40),
+                      child: Material(
+                        elevation: 10.0,
+                        shadowColor: Colors.blueGrey[100],
+                        borderOnForeground: false,
+                        borderRadius: const BorderRadius.all(
+                          const Radius.circular(10.0),
+                        ),
+                        color: Colors.white,
+                        child: TextFormField(
+                          enabled: (listOfElements[i].isDone)?false:true,
+                          controller: _controllerInput,
+                          textAlign: TextAlign.center,
+                          decoration: InputDecoration(
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.white, width: 0.0),
+                                borderRadius: const BorderRadius.all(
+                                  const Radius.circular(10.0),
+                                ),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.white, width: 1.0),
+                                borderRadius: const BorderRadius.all(
+                                  const Radius.circular(10.0),
+                                ),
+                              ),
+                              filled: true,
+                              hintStyle: new TextStyle(
+                                color: Colors.grey,
+                                fontSize: 16.0,
+                              ),
+                              hintText: listOfElements[i].input,
+                              fillColor: (listOfElements[i].isDone)?Colors.green:Colors.white70
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                                BorderSide(color: Colors.white, width: 1.0),
-                            borderRadius: const BorderRadius.all(
-                              const Radius.circular(10.0),
-                            ),
-                          ),
-                          filled: true,
-                          hintStyle: new TextStyle(
-                            color: Colors.grey,
-                            fontSize: 16.0,
-                          ),
-                          hintText: widget.lettre+"***********",
-                          fillColor: Colors.white70),
-                    ),
-                  ),
+                          onChanged: (value) async {
+                            listOfElements[i].input = value;
+                            smrGame.checkSomething(i,value).then((v) {
+                              if(v == true){
+                                listOfElements[i].isDone = true;
+                              }else{
+                                listOfElements[i].isDone = false;
+                              }
+                            });
+                          },
+                        ),
+                      ),
+                    );
+                  },
                 ),
                 Padding(
                   padding: const EdgeInsets.all(20),
@@ -527,41 +555,41 @@ class _FruitlegumesState extends State<Fruitlegumes> {
 
   void next() {
     setState(() {
-      if(_controllerInput.text != null ){
-       reponse[i]= _controllerInput.text;
-       _controllerInput.clear() ;
+      if (_controllerInput.text != null) {
+        reponse[i] = _controllerInput.text;
+        _controllerInput.clear();
       }
-      
-      for (var i = 0; i < reponse.length; i++) {
-        print("hey"+reponse[i]);
-      }
+
+      // for (var i = 0; i < reponse.length; i++) {
+      //   // print("hey" + reponse[i]);
+      // }
       if (i < 5) {
         ++i;
 
         ++index;
-        if(reponse[i] != null ){
-        _controllerInput.text=reponse[i];
-      }
+        if (reponse[i] != null) {
+          _controllerInput.text = reponse[i];
+        }
       }
     });
   }
 
   void previous() {
     setState(() {
-      if(_controllerInput.text != null ){
-       reponse[i]= _controllerInput.text;
-       _controllerInput.clear() ;
+      if (_controllerInput.text != null) {
+        reponse[i] = _controllerInput.text;
+        _controllerInput.clear();
       }
-      
-      for (var i = 0; i < reponse.length; i++) {
-        print("hey"+reponse[i]);
-      }
+
+      // for (var i = 0; i < reponse.length; i++) {
+      //   print("hey" + reponse[i]);
+      // }
       if (i > 0) {
         --i;
         --index;
-        if(reponse[i] != null ){
-        _controllerInput.text=reponse[i];
-      }
+        if (reponse[i] != null) {
+          _controllerInput.text = reponse[i];
+        }
       }
     });
   }
