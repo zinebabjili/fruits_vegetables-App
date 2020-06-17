@@ -209,7 +209,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                               ],
                                             ),
                                             child: Icon(Icons.check_circle,
-                                                color: Colors.green, size: 40)),
+                                                color: (listOfElements[0].isDone)?Colors.green:Colors.white,
+                                                size: 40) ),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -226,7 +227,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                               ],
                                             ),
                                             child: Icon(Icons.check_circle,
-                                                color: Colors.green, size: 40)),
+                                                color: (listOfElements[1].isDone)?Colors.green:Colors.white,
+                                                size: 40)),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -243,7 +245,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                               ],
                                             ),
                                             child: Icon(Icons.check_circle,
-                                                color: Colors.green, size: 40)),
+                                                color: (listOfElements[2].isDone)?Colors.green:Colors.white,
+                                                size: 40)),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -260,7 +263,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                               ],
                                             ),
                                             child: Icon(Icons.check_circle,
-                                                color: Colors.green, size: 40)),
+                                                color: (listOfElements[3].isDone)?Colors.green:Colors.white, 
+                                                size: 40)),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -277,7 +281,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                               ],
                                             ),
                                             child: Icon(Icons.brightness_1,
-                                                color: Colors.white, size: 40)),
+                                                color: (listOfElements[4].isDone)?Colors.green:Colors.white, 
+                                                size: 40)),
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
@@ -294,7 +299,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                               ],
                                             ),
                                             child: Icon(Icons.brightness_1,
-                                                color: Colors.white, size: 40)),
+                                                color: (listOfElements[5].isDone)?Colors.green:Colors.white, 
+                                                size: 40)),
                                       ),
                                     ],
                                   ))
