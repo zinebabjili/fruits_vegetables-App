@@ -28,10 +28,7 @@ class _ScoreState extends State<Score> {
       }
     }
     _listSuggestions = [
-      "tajine 3amer mekla",
-      "tajine seghira walkin bnine",
-      "warah bnine",
-      "tajine kbire khanz mafih maytkal"
+      "Example"
     ];
   }
 

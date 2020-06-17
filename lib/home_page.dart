@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_vegetables/daoData/notifierData.dart';
+import 'package:provider/provider.dart';
 
 import 'level.dart';
 
@@ -48,59 +50,89 @@ class HomePage extends StatelessWidget {
                 flex: 4,
                 child: Column(
                   children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Center(
-                          child: RaisedButton(
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(5.0)),
-                              color: Theme.of(context).primaryColor,
-                              child: Text('Niveau Facile',
-                                  style: Theme.of(context).textTheme.button),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          EasyLevel(color:Theme.of(context).primaryColor,level:"Facile"),
-                                    ));
-                              })),
+                    Consumer<NotifierData>(
+                      builder: (_, cinemaNotf, __) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: Center(
+                              child: RaisedButton(
+                                  shape: new RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(5.0)),
+                                  color: Theme.of(context).primaryColor,
+                                  child: Text('Niveau Facile',
+                                      style:
+                                          Theme.of(context).textTheme.button),
+                                  onPressed: () {
+                                    cinemaNotf.getStarted(1);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              EasyLevel(
+                                                  color: Theme.of(context)
+                                                      .primaryColor,
+                                                  level: "Facile"),
+                                        ));
+                                  })),
+                        );
+                      },
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Center(
-                          child: RaisedButton(
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(5.0)),
-                              color: Theme.of(context).accentColor,
-                              child: Text('Niveau Moyen',
-                                  style: Theme.of(context).textTheme.button),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          EasyLevel(color:Theme.of(context).accentColor,level:"Moyen"),
-                                    ));
-                              })),
+                    Consumer<NotifierData>(
+                      builder: (_, cinemaNotf, __) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: Center(
+                              child: RaisedButton(
+                                  shape: new RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(5.0)),
+                                  color: Theme.of(context).accentColor,
+                                  child: Text('Niveau Moyen',
+                                      style:
+                                          Theme.of(context).textTheme.button),
+                                  onPressed: () {
+                                    cinemaNotf.getStarted(2);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              EasyLevel(
+                                                  color: Theme.of(context)
+                                                      .accentColor,
+                                                  level: "Moyen"),
+                                        ));
+                                  })),
+                        );
+                      },
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10.0),
-                      child: Center(
-                          child: RaisedButton(
-                              shape: new RoundedRectangleBorder(
-                                  borderRadius: new BorderRadius.circular(5.0)),
-                              color: Theme.of(context).canvasColor,
-                              child: Text('Niveau Difficile',
-                                  style: Theme.of(context).textTheme.button),
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (BuildContext context) =>
-                                          EasyLevel(color:Theme.of(context).canvasColor,level:"Difficile"),
-                                    ));
-                              })),
+                    Consumer<NotifierData>(
+                      builder: (_, cinemaNotf, __) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: Center(
+                              child: RaisedButton(
+                                  shape: new RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(5.0)),
+                                  color: Theme.of(context).canvasColor,
+                                  child: Text('Niveau Difficile',
+                                      style:
+                                          Theme.of(context).textTheme.button),
+                                  onPressed: () {
+                                    cinemaNotf.getStarted(3);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (BuildContext context) =>
+                                              EasyLevel(
+                                                  color: Theme.of(context)
+                                                      .canvasColor,
+                                                  level: "Difficile"),
+                                        ));
+                                  })),
+                        );
+                      },
                     ),
                   ],
                 )),

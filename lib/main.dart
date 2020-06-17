@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:fruits_vegetables/theme.dart';
+import 'package:fruits_vegetables/daoData/notifierData.dart';
+import 'package:provider/provider.dart';
 import 'router.dart' as router;
 
+// void main() {
+//   runApp(MaterialApp(
+//     debugShowCheckedModeBanner: false,
+//     home: MyApp(),
+//   ));
+// }
+
 void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: MyApp(),
-  ));
+  runApp(
+  ChangeNotifierProvider<NotifierData>(
+    create: (BuildContext context)  => NotifierData(),
+    // builder: (context) => CinemaNotifier(),
+    child: MyApp(),
+  )
+  );
 }
 
 class MyApp extends StatelessWidget {
