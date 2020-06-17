@@ -9,6 +9,7 @@ class Game{
 
   final String level;
   final double dure;
+  String lettre;
   final Country country;
   final Fruit fruit;
   final Job job;
@@ -16,7 +17,7 @@ class Game{
   final Animal animal;
   final Capital capital;
 
-  Game(this.level, this.dure, this.country, this.fruit, this.job, this.legume, this.animal, this.capital);
+  Game(this.level, this.dure,this.lettre ,this.country, this.fruit, this.job, this.legume, this.animal, this.capital);
   
 
 }

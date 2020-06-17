@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:fruits_vegetables/daoData/notifierData.dart';
+import 'package:provider/provider.dart';
 import 'board_view.dart';
 import 'model.dart';
 import 'Fruitlegumes.dart';
@@ -9,7 +11,11 @@ class EasyLevel extends StatefulWidget {
   final Color color;
   final String level;
 
-  const EasyLevel({Key key, this.color, this.level,}) : super(key: key);
+  const EasyLevel({
+    Key key,
+    this.color,
+    this.level,
+  }) : super(key: key);
   @override
   State<StatefulWidget> createState() {
     return _EasyLevelState();
@@ -18,6 +24,8 @@ class EasyLevel extends StatefulWidget {
 
 class _EasyLevelState extends State<EasyLevel>
     with SingleTickerProviderStateMixin {
+  bool clicked = false;
+  bool clickedButFirstTime = false;
   double _angle = 0;
   double _current = 0;
   AnimationController _ctrl;
@@ -67,10 +75,15 @@ class _EasyLevelState extends State<EasyLevel>
             builder: (context, child) {
               final _value = _ani.value;
               final _angle = _value * this._angle;
+              // print("Angle" + _angle.toString());
               return Stack(
                 alignment: Alignment.center,
                 children: <Widget>[
-                  BoardView(color: widget.color,items: _items, current: _current, angle: _angle),
+                  BoardView(
+                      color: widget.color,
+                      items: _items,
+                      current: _current,
+                      angle: _angle),
                   _buildGo(),
                   _buildResult(_value),
                   _buildButton(_value),
@@ -118,6 +131,7 @@ class _EasyLevelState extends State<EasyLevel>
         _ctrl.reset();
       });
     }
+    this.clicked = true;
   }
 
   int _calIndex(value) {
@@ -127,9 +141,18 @@ class _EasyLevelState extends State<EasyLevel>
 
   //RESULT
   _buildResult(_value) {
+
     var _index = _calIndex(_value * _angle + _current);
     //String _asset = _items[_index].asset;
     String _asset = _items[_index].alphabet;
+    if(_value == 0 && this.clicked == true && this.clickedButFirstTime== true){
+      String letter = _asset[0];
+      Provider.of<NotifierData>(context, listen: false).gameStarted.lettre = letter;
+      print(letter);
+    }
+    if(_value == 0 &&  this.clicked == true){
+      this.clickedButFirstTime = true;
+    }
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 85.0),
       child: Align(
@@ -153,34 +176,65 @@ class _EasyLevelState extends State<EasyLevel>
     var _index = _calIndex(_value * _angle + _current);
     //String _asset = _items[_index].asset;
     String _asset = _items[_index].alphabet;
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 20.0),
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: RaisedButton(
-            color: widget.color,
-            child: Text('Commencer', style: Theme.of(context).textTheme.button),
-            onPressed: () {
-              if(widget.level=="Facile"){
-                Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => Fruitlegumes(color:widget.color,lettre:_asset,level: widget.level),
-                ),);
-              }else if(widget.level=="Moyen"){
-                Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => Fruitlegumes(color:widget.color,lettre:_asset,level: widget.level),
-                ),);
-              }else{
-                Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (context) => Fruitlegumes(color:widget.color,lettre:_asset,level: widget.level),
-                ),);
-              }
-              
-              /*Navigator.of(context).pushNamed('/Fruitlegumes');*/
-            }),
-      ),
+    return Consumer<NotifierData>(
+      builder: (_, smrGame, __) {
+        if(Provider.of<NotifierData>(context,listen: false).gameStarted.lettre == ""){
+          return Padding(
+          padding: EdgeInsets.symmetric(vertical: 20.0),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: RaisedButton(
+                color: widget.color,
+                child: Text('Commencer',
+                    style: Theme.of(context).textTheme.button),
+                onPressed: null),
+          ),
+        );
+        }else{
+          return Padding(
+          padding: EdgeInsets.symmetric(vertical: 20.0),
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: RaisedButton(
+                color: widget.color,
+                child: Text('Commencer',
+                    style: Theme.of(context).textTheme.button),
+                onPressed: () {
+                  if (widget.level == "Facile") {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Fruitlegumes(
+                            color: widget.color,
+                            lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
+                            level: widget.level),
+                      ),
+                    );
+                  } else if (widget.level == "Moyen") {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Fruitlegumes(
+                            color: widget.color,
+                            lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
+                            level: widget.level),
+                      ),
+                    );
+                  } else {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => Fruitlegumes(
+                            color: widget.color,
+                            lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
+                            level: widget.level),
+                      ),
+                    );
+                  }
+                  /*Navigator.of(context).pushNamed('/Fruitlegumes');*/
+                }),
+          ),
+        );
+        }
+        
+      },
     );
   }
 
@@ -189,7 +243,7 @@ class _EasyLevelState extends State<EasyLevel>
       padding: EdgeInsets.only(top: 100),
       child: Align(
         alignment: Alignment.topCenter,
-        child: Text('Niveau : '+widget.level,
+        child: Text('Niveau : ' + widget.level,
             style: (Theme.of(context).textTheme.headline)),
       ),
     );
@@ -200,20 +254,19 @@ class _EasyLevelState extends State<EasyLevel>
       child: Align(
         alignment: Alignment.topLeft,
         child: Padding(
-          padding: EdgeInsets.only(top: 50, left:30 ),
+          padding: EdgeInsets.only(top: 50, left: 30),
           child: RotatedBox(
             quarterTurns: 2,
             child: IconButton(
-                icon: Icon(
-                  Icons.play_circle_filled, color: widget.color, size: 60
-                ),
-                onPressed: (){
-                  Navigator.of(context).pushNamed('/');
-                },
+              icon:
+                  Icon(Icons.play_circle_filled, color: widget.color, size: 60),
+              onPressed: () {
+                Navigator.of(context).pushNamed('/');
+              },
             ),
           ),
-          ),
         ),
+      ),
     );
   }
 }

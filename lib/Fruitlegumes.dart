@@ -287,7 +287,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                             Padding(
                               padding: const EdgeInsets.only(top: 30, left: 20),
                               child: Text(
-                                "Lettre is: " + widget.lettre[0],
+                                "Lettre is: " + widget.lettre,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 25,
@@ -465,7 +465,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                             color: Colors.grey,
                             fontSize: 16.0,
                           ),
-                          hintText: widget.lettre[0]+"***********",
+                          hintText: widget.lettre+"***********",
                           fillColor: Colors.white70),
                     ),
                   ),
@@ -477,7 +477,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                     "Vous devez saisir un " +
                         '${champs[i]}' +
                         " qui commance par la lettre \n ' " +
-                        widget.lettre[0] +
+                        widget.lettre +
                         " '",
                     style: TextStyle(
                       fontSize: 16,
