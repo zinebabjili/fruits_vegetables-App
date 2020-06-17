@@ -91,7 +91,7 @@ class NotifierData with ChangeNotifier {
     if(index == 0){
       bool state = false;
       await repo.isCountryCorrect(label).then((value) => {
-        print(value),
+        // print(value),
         state = value,
       });
       return state;
@@ -99,7 +99,7 @@ class NotifierData with ChangeNotifier {
     else if(index == 2){
       bool state = false;
       await repo.isCapitalCorrect(label).then((value) => {
-        print(value),
+        // print(value),
         state = value,
       });
       return state;
