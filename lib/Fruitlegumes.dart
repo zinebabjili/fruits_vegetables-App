@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fruits_vegetables/daoData/notifierData.dart';
 import 'package:fruits_vegetables/score.dart';
+import 'package:provider/provider.dart';
 
 import 'level.dart';
 
@@ -20,6 +22,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
   Color color;
   _FruitlegumesState({Key key,  this.level, this.color, });
   var champs = ["Animal", "Capital", "Fruit", "Legume", "Metier", "Pays"];
+  // this.champs = [Provider.of<NotifierData>(context, listen: false).gameStarted.animal.label];
+
   List<String> reponse = ["","","","","", ""];
   var _controllerInput = TextEditingController();
   
@@ -70,6 +74,10 @@ class _FruitlegumesState extends State<Fruitlegumes> {
 
   @override
   Widget build(BuildContext context) {
+    // this.champs = [Provider.of<NotifierData>(context, listen: false).gameStarted.animal.label];
+    
+    var listOfElements = Provider.of<NotifierData>(context, listen: false).gameStarted.Elements;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -311,7 +319,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Container(
                             child: Text(
-                          '${champs[i]}',
+                          '${listOfElements[i].label}',
                           style: TextStyle(
                               fontSize: 25,
                               color: Colors.white,
@@ -358,8 +366,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                 child: CircleAvatar(
                                   radius: 120.0,
                                   backgroundColor: Colors.white,
-                                  backgroundImage: AssetImage(
-                                      "assets/img/" + '${champs[i]}' + ".jpg"),
+                                  backgroundImage: AssetImage(listOfElements[i].picture),
                                 ),
                               ),
                             ),
@@ -475,7 +482,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                   child: Container(
                       child: Text(
                     "Vous devez saisir un " +
-                        '${champs[i]}' +
+                        '${listOfElements[i].label}' +
                         " qui commance par la lettre \n ' " +
                         widget.lettre +
                         " '",

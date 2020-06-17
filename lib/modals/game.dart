@@ -5,19 +5,21 @@ import 'package:fruits_vegetables/modals/fruit.dart';
 import 'package:fruits_vegetables/modals/job.dart';
 import 'package:fruits_vegetables/modals/legume.dart';
 
-class Game{
-
+class Game {
   final String level;
   final double dure;
   String lettre;
-  final Country country;
-  final Fruit fruit;
-  final Job job;
-  final Legume legume;
-  final Animal animal;
-  final Capital capital;
+  List<dynamic> Elements;
 
-  Game(this.level, this.dure,this.lettre ,this.country, this.fruit, this.job, this.legume, this.animal, this.capital);
-  
+  Game(this.level, this.dure, this.lettre);
 
+  // Country country;
+  // Fruit fruit;
+  // Job job;
+  // Legume legume;
+  // Animal animal;
+  // Capital capital;
+
+  // Game(this.level, this.dure, this.lettre, this.country, this.fruit, this.job,
+  //     this.legume, this.animal, this.capital);
 }

@@ -64,6 +64,7 @@ class _EasyLevelState extends State<EasyLevel>
     var _duration = Duration(milliseconds: 6000);
     _ctrl = AnimationController(vsync: this, duration: _duration);
     _ani = CurvedAnimation(parent: _ctrl, curve: Curves.fastLinearToSlowEaseIn);
+    Provider.of<NotifierData>(context, listen: false).gameStarted.lettre = "";
   }
 
   @override
@@ -201,6 +202,7 @@ class _EasyLevelState extends State<EasyLevel>
                     style: Theme.of(context).textTheme.button),
                 onPressed: () {
                   if (widget.level == "Facile") {
+                    smrGame.setGameInitialDATA(1);
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => Fruitlegumes(
@@ -210,6 +212,7 @@ class _EasyLevelState extends State<EasyLevel>
                       ),
                     );
                   } else if (widget.level == "Moyen") {
+                    smrGame.setGameInitialDATA(2);
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => Fruitlegumes(
@@ -219,6 +222,7 @@ class _EasyLevelState extends State<EasyLevel>
                       ),
                     );
                   } else {
+                    smrGame.setGameInitialDATA(3);
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => Fruitlegumes(
