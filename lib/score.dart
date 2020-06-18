@@ -28,6 +28,7 @@ class _ScoreState extends State<Score> {
     //   // if(reponse[i].isDone){
     //   //   score++;
     //   // }
+    print("result is "  +  reponse.toString());
 
 
     _listSuggestions = [

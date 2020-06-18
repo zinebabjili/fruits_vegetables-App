@@ -40,12 +40,13 @@ class _FruitlegumesState extends State<Fruitlegumes> {
 
   int minuit = 00;
   int second = 00;
-  Timer timer;
+  Timer timer ;
   
   @override
   void initState() {
     super.initState();
-    startTimer();
+    minuit = 00;
+    second = 00;
     if (level == "Facile") {
       minuit = 05;
     } else if (level == "Moyen") {
@@ -53,6 +54,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
     } else {
       minuit = 01;
     }
+    startTimer();
+
 
   }
 
@@ -72,7 +75,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                 builder: (BuildContext context) => Score(
                   color: color,
                   level: level,
-                  reponse: 5,
+                  reponse: getResult(null),
                 ),
               ));
           timer.cancel();
@@ -562,6 +565,9 @@ class _FruitlegumesState extends State<Fruitlegumes> {
   }
 
   int getResult(List<dynamic> lili){
+    if(lili == null){
+      lili =  Provider.of<NotifierData>(context, listen: false).gameStarted.Elements;
+    }
     int scr = 0;
     for(int i = 0; i < lili.length ; i++){
       if(lili[i].isDone){
