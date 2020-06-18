@@ -205,7 +205,7 @@ class _EasyLevelState extends State<EasyLevel>
                     smrGame.setGameInitialDATA(1);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => Fruitlegumes(
+                        builder: (context) =>  Fruitlegumes(
                             color: widget.color,
                             lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
                             level: widget.level),
@@ -215,7 +215,7 @@ class _EasyLevelState extends State<EasyLevel>
                     smrGame.setGameInitialDATA(2);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => Fruitlegumes(
+                        builder: (context) => new Fruitlegumes(
                             color: widget.color,
                             lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
                             level: widget.level),
@@ -225,7 +225,7 @@ class _EasyLevelState extends State<EasyLevel>
                     smrGame.setGameInitialDATA(3);
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => Fruitlegumes(
+                        builder: (context) => new Fruitlegumes(
                             color: widget.color,
                             lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
                             level: widget.level),

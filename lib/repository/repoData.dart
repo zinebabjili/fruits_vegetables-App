@@ -1,11 +1,14 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter/services.dart' show rootBundle;
 
 String apiUrlCapitals = "https://restcountries.eu/rest/v2/capital/";
 String apiUrlCountries = "https://restcountries.eu/rest/v2/name/";
 String apuiUrlFruits = "http://www.fruityvice.com/api/fruit/";
+
 
 class RepoData {
 
@@ -63,6 +66,37 @@ class RepoData {
       return true;
     }
     return false;
+  }
+
+  Future<List<String>> loadAnimal(String char) async {
+    final  response = await rootBundle.loadString('assets/json/animal-data.json'); 
+    final decoded = json.decode(response);
+    List<String> words= new List<String>();
+
+    for (var i = 0; i < decoded.length; i++) {
+      String val = decoded[i];
+      if(val[0].toLowerCase() == char.toLowerCase()){
+        words.add(val.toLowerCase());
+      }
+    }
+
+    return words;
+
+  }
+
+  Future<List<String>> loadVegetables(String char) async {
+    final  response = await rootBundle.loadString('assets/json/legume-data.json'); 
+    final decoded = json.decode(response);
+    List<String> words= new List<String>();
+
+    for (var i = 0; i < decoded.length; i++) {
+      String val = decoded[i];
+      if(val[0].toLowerCase() == char.toLowerCase()){
+        words.add(val.toLowerCase());
+      }
+    }
+    return words;
+
   }
 
 }
