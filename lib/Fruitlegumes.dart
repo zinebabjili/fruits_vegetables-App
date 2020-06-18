@@ -72,7 +72,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                 builder: (BuildContext context) => Score(
                   color: color,
                   level: level,
-                  reponse: this.reponse,
+                  reponse: 5,
                 ),
               ));
           timer.cancel();
@@ -548,7 +548,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                           builder: (context) => Score(
                             color: widget.color,
                             level: widget.level,
-                            reponse: this.reponse,
+                            reponse: getResult(listOfElements),
                           ),
                         ),
                       );
@@ -559,6 +559,16 @@ class _FruitlegumesState extends State<Fruitlegumes> {
         ),
       ),
     );
+  }
+
+  int getResult(List<dynamic> lili){
+    int scr = 0;
+    for(int i = 0; i < lili.length ; i++){
+      if(lili[i].isDone){
+        scr++;
+      }
+    }
+    return scr;
   }
 
   void next() {
@@ -603,4 +613,5 @@ class _FruitlegumesState extends State<Fruitlegumes> {
 
     });
   }
+
 }

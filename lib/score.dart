@@ -7,7 +7,7 @@ import 'home_page.dart';
 class Score extends StatefulWidget {
   final Color color;
   final String level;
-  final List<String> reponse;
+  final int reponse;
 
   const Score({Key key, this.color, this.level, this.reponse}) : super(key: key);
   @override
@@ -15,18 +15,21 @@ class Score extends StatefulWidget {
 }
 
 class _ScoreState extends State<Score> {
-  List<String> reponse;
+  int reponse;
   _ScoreState({Key key,  this.reponse});
   List<String> _listSuggestions;
-  double score = 0;
+  // double score = 0;
   @override
   void initState() {
     super.initState();
-    for (var i = 0; i < reponse.length; i++) {
-      if(reponse[i] != ""){
-        score++;
-      }
-    }
+    // print("length " + reponse.length.toString());
+    // for (var i = 0; i < reponse.length; i++) {
+    //   print(reponse[i].isDone);
+    //   // if(reponse[i].isDone){
+    //   //   score++;
+    //   // }
+
+
     _listSuggestions = [
       "Example"
     ];
@@ -117,7 +120,7 @@ class _ScoreState extends State<Score> {
             ),
             // pourcantage score
             Text(
-              double.parse((score*100/6).toStringAsFixed(2)).toString()+" %",
+              double.parse((reponse *100/6).toStringAsFixed(2)).toString()+" %",
               style: TextStyle(
                 fontFamily: 'OpenSans-Bold',
                 fontSize: 40,

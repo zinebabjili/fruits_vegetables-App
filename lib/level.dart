@@ -149,7 +149,9 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
         this.clickedButFirstTime == true) {
       String letter = _asset[0];
       Provider.of<NotifierData>(context, listen: false).gameStarted.lettre =
-          letter;
+          "T";
+      // Provider.of<NotifierData>(context, listen: false).gameStarted.lettre =
+      //     letter;
       // print(letter);
     }
     if (_value == 0 && this.clicked == true) {
