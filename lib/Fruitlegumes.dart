@@ -97,8 +97,6 @@ class _FruitlegumesState extends State<Fruitlegumes> {
     var listOfElements =
         Provider.of<NotifierData>(context, listen: false).gameStarted.Elements;
 
-    var onSearching = false;
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -215,6 +213,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
                                                   decoration: BoxDecoration(
+                                                    border: Border.all(color: Colors.black87 , width: (index == 1)?2:0),
                                                     color: Colors.white,
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -239,6 +238,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
                                                   decoration: BoxDecoration(
+                                                    border: Border.all(color: Colors.black87 , width: (index == 2)?2:0),
                                                     color: Colors.white,
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -263,6 +263,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
                                                   decoration: BoxDecoration(
+                                                    border: Border.all(color: Colors.black87 , width: (index == 3)?2:0),
                                                     color: Colors.white,
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -287,6 +288,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
                                                   decoration: BoxDecoration(
+                                                    border: Border.all(color: Colors.black87 , width: (index == 4)?2:0),
                                                     color: Colors.white,
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -311,6 +313,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
                                                   decoration: BoxDecoration(
+                                                    border: Border.all(color: Colors.black87 , width: (index == 5)?2:0),
                                                     color: Colors.white,
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -335,6 +338,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                                   const EdgeInsets.all(8.0),
                                               child: Container(
                                                   decoration: BoxDecoration(
+                                                    border: Border.all(color: Colors.black87 , width: (index == 6)?2:0),
                                                     color: Colors.white,
                                                     borderRadius:
                                                         BorderRadius.circular(
@@ -641,8 +645,11 @@ class _FruitlegumesState extends State<Fruitlegumes> {
       lili = Provider.of<NotifierData>(context, listen: false)
           .gameStarted
           .Elements;
-        return 0;
     }
+    if(lili == null){
+      return 0;
+    }
+    
     int scr = 0;
     for (int i = 0; i < lili.length; i++) {
       if (lili[i].isDone) {
