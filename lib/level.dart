@@ -22,8 +22,7 @@ class EasyLevel extends StatefulWidget {
   }
 }
 
-class _EasyLevelState extends State<EasyLevel>
-    with SingleTickerProviderStateMixin {
+class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMixin {
   bool clicked = false;
   bool clickedButFirstTime = false;
   double _angle = 0;
@@ -142,16 +141,18 @@ class _EasyLevelState extends State<EasyLevel>
 
   //RESULT
   _buildResult(_value) {
-
     var _index = _calIndex(_value * _angle + _current);
     //String _asset = _items[_index].asset;
     String _asset = _items[_index].alphabet;
-    if(_value == 0 && this.clicked == true && this.clickedButFirstTime== true){
+    if (_value == 0 &&
+        this.clicked == true &&
+        this.clickedButFirstTime == true) {
       String letter = _asset[0];
-      Provider.of<NotifierData>(context, listen: false).gameStarted.lettre = letter;
+      Provider.of<NotifierData>(context, listen: false).gameStarted.lettre =
+          letter;
       // print(letter);
     }
-    if(_value == 0 &&  this.clicked == true){
+    if (_value == 0 && this.clicked == true) {
       this.clickedButFirstTime = true;
     }
     return Padding(
@@ -174,74 +175,64 @@ class _EasyLevelState extends State<EasyLevel>
   }
 
   _buildButton(_value) {
-    var _index = _calIndex(_value * _angle + _current);
-    //String _asset = _items[_index].asset;
-    String _asset = _items[_index].alphabet;
-    return Consumer<NotifierData>(
-      builder: (_, smrGame, __) {
-        if(Provider.of<NotifierData>(context,listen: false).gameStarted.lettre == ""){
+    // var _index = _calIndex(_value * _angle + _current);
+    // String _asset = _items[_index].alphabet;
+    if (Provider.of<NotifierData>(context, listen: false).gameStarted.lettre == "" ) {
+      return Padding(
+        padding: EdgeInsets.symmetric(vertical: 20.0),
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: RaisedButton(
+              color: widget.color,
+              child:
+                  Text('Commencer', style: Theme.of(context).textTheme.button),
+              onPressed: null),
+        ),
+      );
+    } else {
+      return Consumer<NotifierData>(builder: (_, smrGame, __) {
+        if (true) 
+        {
+          print("ITS TRUE");
           return Padding(
-          padding: EdgeInsets.symmetric(vertical: 20.0),
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: RaisedButton(
-                color: widget.color,
-                child: Text('Commencer',
-                    style: Theme.of(context).textTheme.button),
-                onPressed: null),
-          ),
-        );
-        }else{
-          return Padding(
-          padding: EdgeInsets.symmetric(vertical: 20.0),
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: RaisedButton(
-                color: widget.color,
-                child: Text('Commencer',
-                    style: Theme.of(context).textTheme.button),
-                onPressed: () {
-                  if (widget.level == "Facile") {
-                    smrGame.setGameInitialDATA(1);
-                  } else if (widget.level == "Moyen") {
-                    smrGame.setGameInitialDATA(2);
-                  } else {
-                    smrGame.setGameInitialDATA(3);
-                  }
-                  // Fruitlegumes frt = new Fruitlegumes(
-                  //   color: widget.color,
-                  //   lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
-                  //   level: widget.level
-                  // );
-                  if(true){
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => Fruitlegumes(
-                          color: widget.color,
-                          lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
-                          level: widget.level
-                        ) ,
-                      ),
-                    );
-                  }
-                  Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (BuildContext context) =>
-                         Fruitlegumes(
-                          color: widget.color,
-                          lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
-                          level: widget.level
-                        ),
-                  ));
-                }),
-          ),
-        );
+            padding: EdgeInsets.symmetric(vertical: 20.0),
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: RaisedButton(
+                  color: widget.color,
+                  child: Text('Commencer',
+                      style: Theme.of(context).textTheme.button),
+                  onPressed: () {
+                    if (widget.level == "Facile") {
+                      smrGame.setGameInitialDATA(1);
+                    } else if (widget.level == "Moyen") {
+                      smrGame.setGameInitialDATA(2);
+                    } else {
+                      smrGame.setGameInitialDATA(3);
+                    }
+
+                    showPost(context);
+                    
+                  }),
+            ),
+          );
         }
-        
-      },
-    );
+      });
+    }
   }
+showPost(context) {
+Navigator.of(context).push(
+  MaterialPageRoute(
+    builder: (context) => Fruitlegumes(
+        color: widget.color,
+        lettre: Provider.of<NotifierData>(context,
+                listen: false)
+            .gameStarted
+            .lettre,
+        level: widget.level),
+  ),
+);
+}
 
   _buildText() {
     return Padding(

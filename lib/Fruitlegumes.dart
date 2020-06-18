@@ -45,6 +45,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
   @override
   void initState() {
     super.initState();
+    startTimer();
     if (level == "Facile") {
       minuit = 05;
     } else if (level == "Moyen") {
@@ -52,8 +53,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
     } else {
       minuit = 01;
     }
-    startTimer();
-    super.initState();
+
   }
 
   @override
@@ -91,14 +91,13 @@ class _FruitlegumesState extends State<Fruitlegumes> {
   Widget build(BuildContext context) {
     // this.champs = [Provider.of<NotifierData>(context, listen: false).gameStarted.animal.label];
 
-    var listOfElements =
-        Provider.of<NotifierData>(context, listen: false).gameStarted.Elements;
+    var listOfElements = Provider.of<NotifierData>(context, listen: false).gameStarted.Elements;
 
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            child: Column(
+            child: (listOfElements != null)? Column(
               children: <Widget>[
                 Container(
                   height: 500,
@@ -555,7 +554,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                       );
                     }),
               ],
-            ),
+            ):null,
           ),
         ),
       ),

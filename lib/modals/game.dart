@@ -1,14 +1,7 @@
-import 'package:fruits_vegetables/modals/country.dart';
-import 'package:fruits_vegetables/modals/animal.dart';
-import 'package:fruits_vegetables/modals/capital.dart';
-import 'package:fruits_vegetables/modals/fruit.dart';
-import 'package:fruits_vegetables/modals/job.dart';
-import 'package:fruits_vegetables/modals/legume.dart';
-
 class Game {
   final String level;
   final double dure;
-  String lettre;
+  String lettre = "";
   List<dynamic> Elements;
 
   Game(this.level, this.dure, this.lettre);
