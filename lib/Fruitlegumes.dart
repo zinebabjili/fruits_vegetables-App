@@ -69,7 +69,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
     timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
       setState(() {
         if (minuit < 1 && second < 1) {
-          Navigator.push(
+          Navigator.pushReplacement (
               context,
               MaterialPageRoute(
                 builder: (BuildContext context) => Score(
@@ -546,7 +546,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                           color: Colors.white,
                         )),
                     onPressed: () {
-                      Navigator.of(context).push(
+                      Navigator.of(context).pushReplacement (
                         MaterialPageRoute(
                           builder: (context) => Score(
                             color: widget.color,

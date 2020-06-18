@@ -10,6 +10,7 @@ import 'Fruitlegumes.dart';
 class EasyLevel extends StatefulWidget {
   final Color color;
   final String level;
+  
 
   const EasyLevel({
     Key key,
@@ -23,6 +24,7 @@ class EasyLevel extends StatefulWidget {
 }
 
 class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMixin {
+  
   bool clicked = false;
   bool clickedButFirstTime = false;
   double _angle = 0;
@@ -59,6 +61,7 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
   ];
   @override
   void initState() {
+    print("STARTING");
     super.initState();
     var _duration = Duration(milliseconds: 6000);
     _ctrl = AnimationController(vsync: this, duration: _duration);
@@ -68,6 +71,8 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
+    print("STARTING 2");
+
     return Scaffold(
       body: Container(
         child: AnimatedBuilder(
@@ -148,10 +153,10 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
         this.clicked == true &&
         this.clickedButFirstTime == true) {
       String letter = _asset[0];
-      Provider.of<NotifierData>(context, listen: false).gameStarted.lettre =
-          "T";
       // Provider.of<NotifierData>(context, listen: false).gameStarted.lettre =
-      //     letter;
+      //     "T";
+      Provider.of<NotifierData>(context, listen: false).gameStarted.lettre =
+          letter;
       // print(letter);
     }
     if (_value == 0 && this.clicked == true) {
