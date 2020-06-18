@@ -68,7 +68,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
   void startTimer() {
     timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
       setState(() {
-        if (minuit < 1 && second < 1) {
+        if (minuit < 1 && second < 1 || getResult(null) == 6) {
           Navigator.pushReplacement (
               context,
               MaterialPageRoute(
