@@ -142,7 +142,7 @@ class NotifierData with ChangeNotifier {
       return false;
     }else if(index == 4){
       List<String> animalss = gameStarted.Elements[index].words;
-      print(animalss);
+      // print(animalss);
       for(int i = 0; i< animalss.length; i++){
         if(animalss[i] == label.toLowerCase()) return true;
       }
