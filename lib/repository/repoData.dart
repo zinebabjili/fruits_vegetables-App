@@ -22,6 +22,11 @@ class RepoData {
     var rbody = response.body;
 
     final jsonDecoded = json.decode(rbody);
+    
+    if(jsonDecoded.length > 1){
+      return false;
+    }
+    
     for (var i = 0; i < jsonDecoded.length; i++) {
       if(jsonDecoded[i]["capital"].toLowerCase()  == capital.toLowerCase()){
         return true;
@@ -41,6 +46,10 @@ class RepoData {
     var rbody = response.body;
 
     final jsonDecoded = json.decode(rbody);
+    if(jsonDecoded.length > 1){
+      return false;
+    }
+
     for (var i = 0; i < jsonDecoded.length; i++) {
       if(jsonDecoded[i]["name"].toLowerCase()  == country.toLowerCase()){
         return true;

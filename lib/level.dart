@@ -61,7 +61,6 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
   ];
   @override
   void initState() {
-    print("STARTING");
     super.initState();
     var _duration = Duration(milliseconds: 6000);
     _ctrl = AnimationController(vsync: this, duration: _duration);
@@ -71,8 +70,6 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    print("STARTING 2");
-
     return Scaffold(
       body: Container(
         child: AnimatedBuilder(
@@ -157,7 +154,7 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
       //     "T";
       Provider.of<NotifierData>(context, listen: false).gameStarted.lettre =
           letter;
-      // print(letter);
+
     }
     if (_value == 0 && this.clicked == true) {
       this.clickedButFirstTime = true;
