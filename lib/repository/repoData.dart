@@ -99,4 +99,19 @@ class RepoData {
 
   }
 
+  Future<List<String>> loadJobs(String char) async {
+    final  response = await rootBundle.loadString('assets/json/jobs-data.json'); 
+    final decoded = json.decode(response);
+    List<String> words= new List<String>();
+
+    for (var i = 0; i < decoded.length; i++) {
+      String val = decoded[i];
+      if(val[0].toLowerCase() == char.toLowerCase()){
+        words.add(val.toLowerCase());
+      }
+    }
+    return words;
+
+  }
+
 }

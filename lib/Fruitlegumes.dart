@@ -41,8 +41,10 @@ class _FruitlegumesState extends State<Fruitlegumes> {
   int minuit = 00;
   int second = 00;
   Timer timer;
+  
   @override
   void initState() {
+    super.initState();
     if (level == "Facile") {
       minuit = 05;
     } else if (level == "Moyen") {

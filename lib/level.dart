@@ -203,36 +203,37 @@ class _EasyLevelState extends State<EasyLevel>
                 onPressed: () {
                   if (widget.level == "Facile") {
                     smrGame.setGameInitialDATA(1);
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) =>  Fruitlegumes(
-                            color: widget.color,
-                            lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
-                            level: widget.level),
-                      ),
-                    );
                   } else if (widget.level == "Moyen") {
                     smrGame.setGameInitialDATA(2);
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => new Fruitlegumes(
-                            color: widget.color,
-                            lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
-                            level: widget.level),
-                      ),
-                    );
                   } else {
                     smrGame.setGameInitialDATA(3);
+                  }
+                  // Fruitlegumes frt = new Fruitlegumes(
+                  //   color: widget.color,
+                  //   lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
+                  //   level: widget.level
+                  // );
+                  if(true){
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => new Fruitlegumes(
-                            color: widget.color,
-                            lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
-                            level: widget.level),
+                        builder: (context) => Fruitlegumes(
+                          color: widget.color,
+                          lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
+                          level: widget.level
+                        ) ,
                       ),
                     );
                   }
-                  /*Navigator.of(context).pushNamed('/Fruitlegumes');*/
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                         Fruitlegumes(
+                          color: widget.color,
+                          lettre: Provider.of<NotifierData>(context, listen: false).gameStarted.lettre,
+                          level: widget.level
+                        ),
+                  ));
                 }),
           ),
         );

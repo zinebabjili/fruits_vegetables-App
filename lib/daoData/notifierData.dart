@@ -43,7 +43,7 @@ class NotifierData with ChangeNotifier {
       // capitaux = new Capital(
       //     "Capital", "assets/img/app-capitals-green.jpg", null, );
       capitaux = new Capital("Capital", "assets/img/app-capitals-green.jpg", false);
-      jobs = new Job("Job", "assets/img/app-jobs-green.jpg", null, false);
+      jobs = new Job("Job", "assets/img/app-jobs-green.jpg", false);
       animeaux =
           new Animal("Animal", "assets/img/app-animals-green.jpg", false);
       fruits =
@@ -57,7 +57,7 @@ class NotifierData with ChangeNotifier {
       //     "Capital", "assets/img/app-capitals-yellow.jpg", null, false);
       capitaux = new Capital("Capital", "assets/img/app-capitals-yellow.jpg", false);
 
-      jobs = new Job("Job", "assets/img/app-jobs-yellow.jpg", null, false);
+      jobs = new Job("Job", "assets/img/app-jobs-yellow.jpg", false);
       animeaux = new Animal(
           "Animal", "assets/img/app-animals-yellow.jpg", false);
       fruits =
@@ -70,7 +70,7 @@ class NotifierData with ChangeNotifier {
       // capitaux = new Capital(
       //     "Capital", "assets/img/app-capitals-red.jpg", null, false);
       capitaux = new Capital("Capital", "assets/img/app-capitals-red.jpg", false);
-      jobs = new Job("Job", "assets/img/app-jobs-red.jpg", null, false);
+      jobs = new Job("Job", "assets/img/app-jobs-red.jpg", false);
       animeaux =
           new Animal("Animal", "assets/img/app-animals-red.jpg", false);
       fruits = new Fruit("Fruit", "assets/img/app-fruits-red.png", null, false);
@@ -78,15 +78,20 @@ class NotifierData with ChangeNotifier {
 
     List<String> anims ;
     List<String> legums ;
+    List<String> jobss ;
     await repo.loadAnimal(gameStarted.lettre).then((value){
       anims = value;
     });
     await repo.loadVegetables(gameStarted.lettre).then((value){
       legums = value;
     });
+    await repo.loadJobs(gameStarted.lettre).then((value){
+      jobss = value;
+    });
 
     animeaux.words = anims;
     legumes.words = legums;
+    jobs.words = jobss;
 
     List<dynamic> elements = new List();
     elements.add(countries);
@@ -118,7 +123,6 @@ class NotifierData with ChangeNotifier {
       return state;
     }else if(index == 1){
       List<String> legumss = gameStarted.Elements[index].words;
-      print(legumss);
       for(int i = 0; i< legumss.length; i++){
         if(legumss[i] == label.toLowerCase()) return true;
       }
@@ -130,6 +134,12 @@ class NotifierData with ChangeNotifier {
         state = value,
       });
       return state;
+    }else if(index == 3){
+      List<String> jobss = gameStarted.Elements[index].words;
+      for(int i = 0; i< jobss.length; i++){
+        if(jobss[i] == label.toLowerCase()) return true;
+      }
+      return false;
     }else if(index == 4){
       List<String> animalss = gameStarted.Elements[index].words;
       print(animalss);

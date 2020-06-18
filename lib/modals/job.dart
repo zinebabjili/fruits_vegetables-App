@@ -1,11 +1,11 @@
 class Job{
   final String label;
   final String picture;
-  final List<String> words;
-  final bool isDone;
+  List<String> words;
+  bool isDone;
   String input = "";
 
 
-  Job(this.label, this.picture, this.words, this.isDone);
+  Job(this.label, this.picture, this.isDone);
 
 }

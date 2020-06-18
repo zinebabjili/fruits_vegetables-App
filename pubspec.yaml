@@ -47,6 +47,7 @@ flutter:
     - assets/img/
     - assets/json/animal-data.json
     - assets/json/legume-data.json
+    - assets/json/jobs-data.json
     # - assets/img/signs.jpg
     # - assets/img/Animal.jpg
     # - assets/img/Capital.jpg
