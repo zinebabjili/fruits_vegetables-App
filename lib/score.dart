@@ -26,6 +26,8 @@ class _ScoreState extends State<Score> {
   void initState() {
     super.initState();
     print("result is " + reponse.toString());
+    _listSuggestions = ["Loading some ansewrs you missed ..."];
+
   }
 
   @override
@@ -33,7 +35,6 @@ class _ScoreState extends State<Score> {
     Size _size = MediaQuery.of(context).size;
     String lettre =
         Provider.of<NotifierData>(context, listen: false).gameStarted.lettre;
-    _listSuggestions = [];
     Provider.of<NotifierData>(context, listen: false)
         .helpMe(lettre)
         .then((value) {

@@ -163,6 +163,10 @@ class NotifierData with ChangeNotifier {
 
   Future<List<String>> helpMe(String lettre) async{
     List<String> list = new List<String>();
+    if(gameStarted.Elements[0].isDone && gameStarted.Elements[1].isDone && gameStarted.Elements[2].isDone && gameStarted.Elements[3].isDone && gameStarted.Elements[4].isDone && gameStarted.Elements[5].isDone ){
+      list.add("Congratulation");
+      return list;
+    }
     list.add("Answers for the next time");
     if(gameStarted.Elements[0].isDone == false){
       await repo.getRandomCountryByLettre(lettre).then((value) {
@@ -213,6 +217,11 @@ class NotifierData with ChangeNotifier {
       });
     }
 
+    if(list.length == 1 ){
+      List<String> listVc = new List<String>();
+      listVc.add("Good Luck Next Time");
+      return listVc;
+    }
     // if(gameStarted.Elements[5].isDone == false){
     //   print(gameStarted.Elements[5].label);
     //   await repo.getRandomAnimaleByLettre(lettre).then((value) {
