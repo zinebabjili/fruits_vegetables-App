@@ -29,7 +29,6 @@ class MyApp extends StatelessWidget {
       theme: basicTheme(),
       initialRoute: '/',
       onGenerateRoute: router.generateRoute,
-
     );
   }
 }

@@ -160,4 +160,68 @@ class NotifierData with ChangeNotifier {
 
     
   }
+
+  Future<List<String>> helpMe(String lettre) async{
+    List<String> list = new List<String>();
+    list.add("Answers for the next time");
+    if(gameStarted.Elements[0].isDone == false){
+      await repo.getRandomCountryByLettre(lettre).then((value) {
+        if(value != null){
+          print(value);
+          list.add(gameStarted.Elements[0].label + " : " +  value);
+
+        }
+      });
+    }
+    if(gameStarted.Elements[1].isDone == false){
+      await repo.getRandomLegumeByLettre(lettre).then((value) {
+        if(value != null){
+          print(value);
+
+          list.add(gameStarted.Elements[1].label + " : " +  value);
+
+        }
+      });
+    }
+    if(gameStarted.Elements[2].isDone == false){
+      await repo.getRandomCapitalByLettre(lettre).then((value) {
+        if(value != null){
+          print(value);
+
+          list.add(gameStarted.Elements[2].label + " : " +  value);
+
+        }
+      });
+    }
+    if(gameStarted.Elements[3].isDone == false){
+      await repo.getRandomJobeByLettre(lettre).then((value) {
+        if(value != null){
+          print(value);
+
+          list.add(gameStarted.Elements[3].label + " : " +  value);
+
+        }
+      });
+    }
+    if(gameStarted.Elements[4].isDone == false){
+      await repo.getRandomAnimaleByLettre(lettre).then((value) {
+        if(value != null){
+          print(value);
+
+          list.add(gameStarted.Elements[4].label + " : " +  value);
+        }
+      });
+    }
+
+    // if(gameStarted.Elements[5].isDone == false){
+    //   print(gameStarted.Elements[5].label);
+    //   await repo.getRandomAnimaleByLettre(lettre).then((value) {
+    //     if(value != null){
+    //       list.add(value);
+    //     }
+    //   });
+    // }
+  
+    return list;
+  }
 }

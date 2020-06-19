@@ -123,4 +123,104 @@ class RepoData {
 
   }
 
+  Future<String> getRandomCountryByLettre(String lettre) async{
+    final http.Response response = await http.get(apiUrlCountries + lettre + "?fullText=false");
+    if (response.statusCode != 200) {
+      // throw Exception();
+      return null;
+    }
+    var rbody = response.body;
+
+    final jsonDecoded = json.decode(rbody);
+
+    for (var i = 0; i < jsonDecoded.length; i++) {
+      if(jsonDecoded[i]["name"][0].toLowerCase()  == lettre.toLowerCase()){
+        return jsonDecoded[i]["name"];
+      }
+    }
+    return null;
+  }
+
+  Future<String> getRandomLegumeByLettre(String char) async {
+    final  response = await rootBundle.loadString('assets/json/legume-data.json'); 
+    final decoded = json.decode(response);
+    
+    for (var i = 0; i < decoded.length; i++) {
+      String val = decoded[i];
+      if(val[0].toLowerCase() == char.toLowerCase()){
+        return val;
+      }
+    }
+
+    return null;
+
+  }
+
+  Future<String> getRandomCapitalByLettre(String lettre) async{
+    final http.Response response = await http.get(apiUrlCapitals + lettre + "?fullText=false");
+    if (response.statusCode != 200) {
+      // throw Exception();
+      return null;
+    }
+    var rbody = response.body;
+
+    final jsonDecoded = json.decode(rbody);
+
+    for (var i = 0; i < jsonDecoded.length; i++) {
+      if(jsonDecoded[i]["name"][0].toLowerCase()  == lettre.toLowerCase()){
+        return jsonDecoded[i]["name"];
+      }
+    }
+    return null;
+  }
+
+  Future<String> getRandomJobeByLettre(String char) async {
+    final  response = await rootBundle.loadString('assets/json/jobs-data.json'); 
+    final decoded = json.decode(response);
+    
+    for (var i = 0; i < decoded.length; i++) {
+      String val = decoded[i];
+      if(val[0].toLowerCase() == char.toLowerCase()){
+        return val;
+      }
+    }
+
+    return null;
+
+  }
+
+  Future<String> getRandomAnimaleByLettre(String char) async {
+    final  response = await rootBundle.loadString('assets/json/animal-data.json'); 
+    final decoded = json.decode(response);
+    
+    for (var i = 0; i < decoded.length; i++) {
+      String val = decoded[i];
+      if(val[0].toLowerCase() == char.toLowerCase()){
+        return val;
+      }
+    }
+
+    return null;
+
+  }
+
+  Future<bool> getRandomFruitByLettre(String fruit) async {
+
+    final http.Response response = await http.get( apuiUrlFruits + fruit );
+    
+
+    if (response.statusCode != 200) {
+      // throw Exception();
+      return false;
+    }
+
+    var rbody = response.body;
+
+    final jsonDecoded = json.decode(rbody);
+    for (var i = 0; i < jsonDecoded.length; i++) {
+      return true;
+    }
+    return false;
+  }
+
 }
