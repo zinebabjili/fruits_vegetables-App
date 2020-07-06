@@ -15,9 +15,16 @@ class HomePage extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 1,
-              child: Align(
+              child: Padding(
+                padding: EdgeInsets.only(right: 10.0),
+                child: Align(
                   alignment: Alignment.centerRight,
-                  child: Icon(Icons.info_outline, size: 40)),
+                  child: GestureDetector(
+                    onTap: () => _submit(context),
+                    child: Icon(Icons.settings, size: 40),
+                  ),
+                ),
+              ),
             ),
             Expanded(
               flex: 5,
@@ -138,6 +145,188 @@ class HomePage extends StatelessWidget {
                 )),
           ],
         ),
+      ),
+    );
+  }
+}
+
+_submit(context) {
+  showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return DialogSetting();
+      });
+}
+
+class DialogSetting extends StatefulWidget {
+  @override
+  _DialogSettingState createState() => _DialogSettingState();
+}
+
+class _DialogSettingState extends State<DialogSetting> {
+  bool volumeUp = true;
+  String lang = 'fr';
+  Color color = Colors.white;
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      child: Container(
+        height: MediaQuery.of(context).size.height * .5,
+        width: MediaQuery.of(context).size.height * .99,
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(top: 5.0),
+              child: Text('Game Sounds'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          volumeUp = false;
+                        });
+                      },
+                      child: SoundCircular(
+                          iconData: Icons.volume_off,
+                          color: !volumeUp ? Colors.black : Colors.grey)),
+                  GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          volumeUp = true;
+                        });
+                      },
+                      child: SoundCircular(
+                          iconData: Icons.volume_up,
+                          color: volumeUp ? Colors.black : Colors.grey))
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5.0),
+              child: Text('Game Languages'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        lang = 'fr';
+                      });
+                    },
+                    child: Container(
+                        height: (lang == 'fr') ? 58 : 50,
+                        width: (lang == 'fr') ? 58 : 50,
+                        child: DrapeauCircular(nameCountry: 'fr')),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        lang = 'uk';
+                      });
+                    },
+                    child: Container(
+                        height: !(lang == 'fr') ? 58 : 50,
+                        width: !(lang == 'fr') ? 58 : 50,
+                        child: DrapeauCircular(nameCountry: 'uk')),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 5.0),
+              child: Text('Game Theme'),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        color = Colors.black;
+                      });
+                    },
+                    child: Container(
+                      height: (color == Colors.black) ? 58 : 50,
+                      width: (color == Colors.black) ? 58 : 50,
+                      child:Card(
+                        color: Colors.black,
+                          elevation: 6.0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                          clipBehavior: Clip.antiAlias,
+                        ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        color = Colors.white;
+                      });
+                    },
+                    child: Container(
+                        height: !(color == Colors.black) ? 58 : 50,
+                        width: !(color == Colors.black) ? 58 : 50,
+                        child: Card(
+                          color: Colors.white,
+                          elevation: 6.0,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(5.0)),
+                          clipBehavior: Clip.antiAlias,
+                        )),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SoundCircular extends StatelessWidget {
+  final IconData iconData;
+  final Color color;
+
+  const SoundCircular({Key key, this.iconData, this.color}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+      clipBehavior: Clip.antiAlias,
+      child: Icon(iconData, color: color, size: 50),
+    );
+  }
+}
+
+class DrapeauCircular extends StatelessWidget {
+  final String nameCountry;
+
+  const DrapeauCircular({Key key, this.nameCountry}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
+      clipBehavior: Clip.antiAlias,
+      child: Image.asset(
+        'assets/img/' + nameCountry + '.png',
+        fit: BoxFit.fill,
+        height: double.infinity,
       ),
     );
   }
