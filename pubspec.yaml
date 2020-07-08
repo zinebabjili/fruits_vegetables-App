@@ -19,6 +19,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   http: ^0.12.1
   provider: ^4.1.3
 
@@ -48,6 +50,7 @@ flutter:
     - assets/json/animal-data.json
     - assets/json/legume-data.json
     - assets/json/jobs-data.json
+    - languages/
     # - assets/img/signs.jpg
     # - assets/img/Animal.jpg
     # - assets/img/Capital.jpg

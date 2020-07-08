@@ -15,19 +15,25 @@ class NotifierData with ChangeNotifier {
 
   Game gameStarted;
   ThemeData currentTheme = AppTheme.lightTheme;
+  Locale currentLang = Locale('fr', '');
 
   changeTheme(typeoftheme){
     if(typeoftheme == 'light'){
-      print("weslt");
       currentTheme = AppTheme.lightTheme;
     }
     else{
-      print("ici");
       currentTheme = AppTheme.darkTheme;
     }
     notifyListeners();
   }
-
+  void changeLang(){
+    if(currentLang == Locale('en', 'US') ){
+      currentLang = Locale('fr', '');
+    }else{
+      currentLang = Locale('en', 'US');
+    }
+    notifyListeners();
+  }
 
   void getStarted(int i) {
     if (i == 1) {

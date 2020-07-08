@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_vegetables/daoData/AppLocalizations.dart';
 import 'package:fruits_vegetables/daoData/notifierData.dart';
 import 'package:provider/provider.dart';
 
@@ -67,7 +68,7 @@ class HomePage extends StatelessWidget {
                                       borderRadius:
                                           new BorderRadius.circular(5.0)),
                                   color: Theme.of(context).primaryColor,
-                                  child: Text('Niveau Facile',
+                                  child: Text(AppLocalizations.of(context).translate("level_1"),
                                       style:
                                           Theme.of(context).textTheme.button),
                                   onPressed: () {
@@ -95,7 +96,7 @@ class HomePage extends StatelessWidget {
                                       borderRadius:
                                           new BorderRadius.circular(5.0)),
                                   color: Theme.of(context).accentColor,
-                                  child: Text('Niveau Moyen',
+                                  child: Text(AppLocalizations.of(context).translate("level_2"),
                                       style:
                                           Theme.of(context).textTheme.button),
                                   onPressed: () {
@@ -123,7 +124,7 @@ class HomePage extends StatelessWidget {
                                       borderRadius:
                                           new BorderRadius.circular(5.0)),
                                   color: Theme.of(context).canvasColor,
-                                  child: Text('Niveau Difficile',
+                                  child: Text(AppLocalizations.of(context).translate("level_3"),
                                       style:
                                           Theme.of(context).textTheme.button),
                                   onPressed: () {
@@ -165,11 +166,19 @@ class DialogSetting extends StatefulWidget {
 
 class _DialogSettingState extends State<DialogSetting> {
   bool volumeUp = true;
-  String lang = 'fr';
+  String lang;
   ThemeData mode ;
+  void langCurr(){
+    if(Provider.of<NotifierData>(context).currentLang == Locale('en', 'US')){
+      lang ="uk";
+    }else{
+      lang ="fr";
+    }
+  }
   @override
   Widget build(BuildContext context) {
     mode = Provider.of<NotifierData>(context).currentTheme;
+    langCurr();
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
       child: Container(
@@ -220,9 +229,7 @@ class _DialogSettingState extends State<DialogSetting> {
                 children: <Widget>[
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        lang = 'fr';
-                      });
+                      Provider.of<NotifierData>(context, listen: false).changeLang();
                     },
                     child: Container(
                         height: (lang == 'fr') ? 58 : 50,
@@ -231,9 +238,7 @@ class _DialogSettingState extends State<DialogSetting> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        lang = 'uk';
-                      });
+                      Provider.of<NotifierData>(context, listen: false).changeLang();
                     },
                     child: Container(
                         height: !(lang == 'fr') ? 58 : 50,
