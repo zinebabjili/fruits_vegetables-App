@@ -4,6 +4,7 @@ import 'package:flutter/rendering.dart';
 import 'package:fruits_vegetables/daoData/notifierData.dart';
 import 'package:provider/provider.dart';
 import 'board_view.dart';
+import 'daoData/AppLocalizations.dart';
 import 'model.dart';
 import 'Fruitlegumes.dart';
 
@@ -239,11 +240,19 @@ Navigator.of(context).push(
 }
 
   _buildText() {
+    String level;
+    if(widget.level == 'Facile'){
+      level = AppLocalizations.of(context).translate("level_1");
+    }else if(widget.level == 'Moyen'){
+      level = AppLocalizations.of(context).translate("level_2");
+    }else{
+      level = AppLocalizations.of(context).translate("level_3");
+    }
     return Padding(
       padding: EdgeInsets.only(top: 100),
       child: Align(
         alignment: Alignment.topCenter,
-        child: Text('Niveau : ' + widget.level,
+        child: Text(level,
             style: (Theme.of(context).textTheme.title)),
       ),
     );
