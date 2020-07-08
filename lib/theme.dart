@@ -32,7 +32,7 @@ ThemeData basicTheme(){
 
   final ThemeData base=ThemeData.light();
   return base.copyWith(
-    primaryColor: Color.fromARGB(255, 76 ,187, 23),
+    primaryColor: Color.fromARGB(255, 76, 187, 23),
     accentColor: Colors.yellow,
     canvasColor: Colors.red,
     textTheme: _basicTextTheme(base.textTheme),

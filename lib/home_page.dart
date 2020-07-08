@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fruits_vegetables/daoData/notifierData.dart';
 import 'package:provider/provider.dart';
 
+import 'GestionTheme/AppTheme.dart';
 import 'level.dart';
 
 // ignore: camel_case_types
@@ -9,7 +10,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -166,9 +166,10 @@ class DialogSetting extends StatefulWidget {
 class _DialogSettingState extends State<DialogSetting> {
   bool volumeUp = true;
   String lang = 'fr';
-  Color color = Colors.white;
+  ThemeData mode ;
   @override
   Widget build(BuildContext context) {
+    mode = Provider.of<NotifierData>(context).currentTheme;
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
       child: Container(
@@ -254,13 +255,11 @@ class _DialogSettingState extends State<DialogSetting> {
                 children: <Widget>[
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        color = Colors.black;
-                      });
+                      Provider.of<NotifierData>(context, listen: false).changeTheme('dark');
                     },
                     child: Container(
-                      height: (color == Colors.black) ? 58 : 50,
-                      width: (color == Colors.black) ? 58 : 50,
+                      height: (mode == AppTheme.darkTheme) ? 58 : 50,
+                      width: (mode == AppTheme.darkTheme) ? 58 : 50,
                       child:Card(
                         color: Colors.black,
                           elevation: 6.0,
@@ -272,13 +271,11 @@ class _DialogSettingState extends State<DialogSetting> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      setState(() {
-                        color = Colors.white;
-                      });
+                      Provider.of<NotifierData>(context, listen: false).changeTheme('light');
                     },
                     child: Container(
-                        height: !(color == Colors.black) ? 58 : 50,
-                        width: !(color == Colors.black) ? 58 : 50,
+                        height: !(mode == AppTheme.darkTheme) ? 58 : 50,
+                        width: !(mode == AppTheme.darkTheme) ? 58 : 50,
                         child: Card(
                           color: Colors.white,
                           elevation: 6.0,

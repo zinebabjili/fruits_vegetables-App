@@ -47,7 +47,6 @@ class _ScoreState extends State<Score> {
       future: Provider.of<NotifierData>(context).helpMe(lettre),
         builder: (context, AsyncSnapshot<List<String>> snapshot) {
       return Scaffold(
-        backgroundColor: Colors.white,
         body: SafeArea(
           child: SingleChildScrollView(
               child: Column(
@@ -182,11 +181,7 @@ class _ScoreState extends State<Score> {
                       borderRadius: new BorderRadius.circular(5.0)),
                   color: widget.color,
                   child: Text('Rejouer',
-                      style: TextStyle(
-                        fontFamily: 'OpenSans-Bold',
-                        fontSize: 30,
-                        color: Colors.white,
-                      )),
+                      style: Theme.of(context).textTheme.button),
                   onPressed: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(

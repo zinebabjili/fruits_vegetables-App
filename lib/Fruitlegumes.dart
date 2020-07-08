@@ -536,6 +536,9 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                     (listOfElements[i].isDone) ? false : true,
                                 controller: _controllerInput,
                                 textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color:Colors.black
+                                ),
                                 decoration: InputDecoration(
                                     focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
@@ -614,11 +617,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                               borderRadius: new BorderRadius.circular(5.0)),
                           color: widget.color,
                           child: Text('Terminer',
-                              style: TextStyle(
-                                fontFamily: 'OpenSans-Bold',
-                                fontSize: 30,
-                                color: Colors.white,
-                              )),
+                              style: Theme.of(context).textTheme.button),
                           onPressed: () {
                             timer.cancel();
                             Navigator.of(context).pushReplacement(

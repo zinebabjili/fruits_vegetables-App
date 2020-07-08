@@ -244,7 +244,7 @@ Navigator.of(context).push(
       child: Align(
         alignment: Alignment.topCenter,
         child: Text('Niveau : ' + widget.level,
-            style: (Theme.of(context).textTheme.headline)),
+            style: (Theme.of(context).textTheme.title)),
       ),
     );
   }

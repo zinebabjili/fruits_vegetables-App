@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:fruits_vegetables/GestionTheme/AppTheme.dart';
 import 'package:fruits_vegetables/modals/animal.dart';
 import 'package:fruits_vegetables/modals/capital.dart';
 import 'package:fruits_vegetables/modals/country.dart';
@@ -12,6 +14,20 @@ class NotifierData with ChangeNotifier {
   RepoData repo = new RepoData();
 
   Game gameStarted;
+  ThemeData currentTheme = AppTheme.lightTheme;
+
+  changeTheme(typeoftheme){
+    if(typeoftheme == 'light'){
+      print("weslt");
+      currentTheme = AppTheme.lightTheme;
+    }
+    else{
+      print("ici");
+      currentTheme = AppTheme.darkTheme;
+    }
+    notifyListeners();
+  }
+
 
   void getStarted(int i) {
     if (i == 1) {
