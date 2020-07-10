@@ -58,8 +58,8 @@ class _BoardViewState extends State<BoardView> {
     );
   }
 
-  _buildCard(Alphabet Alphabet) {
-    var _rotate = _rotote(widget.items.indexOf(Alphabet));
+  _buildCard(Alphabet alphabet) {
+    var _rotate = _rotote(widget.items.indexOf(alphabet));
     var _angle = 2 * pi / widget.items.length;
     return Transform.rotate(
       angle: _rotate,
@@ -84,8 +84,8 @@ class _BoardViewState extends State<BoardView> {
     );
   }
 
-  _buildImage(Alphabet Alphabet) {
-    var _rotate = _rotote(widget.items.indexOf(Alphabet));
+  _buildImage(Alphabet alphabet) {
+    var _rotate = _rotote(widget.items.indexOf(alphabet));
     return Transform.rotate(
       angle: _rotate,
       child: Container(
@@ -97,7 +97,7 @@ class _BoardViewState extends State<BoardView> {
               BoxConstraints.expand(height: size.height / 3, width: 44),
           child: Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Text(Alphabet.alphabet,style: TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold, color: Colors.black),textAlign: TextAlign.center),
+            child: Text(alphabet.alphabet,style: TextStyle(fontSize: 19.0, fontWeight: FontWeight.bold, color: Colors.black),textAlign: TextAlign.center),
           ),
         ),
       ),
