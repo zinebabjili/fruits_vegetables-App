@@ -1,3 +1,5 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_vegetables/daoData/AppLocalizations.dart';
 import 'package:fruits_vegetables/daoData/notifierData.dart';
@@ -165,9 +167,24 @@ class DialogSetting extends StatefulWidget {
 }
 
 class _DialogSettingState extends State<DialogSetting> {
+  AudioPlayer audioPlayer;
+  AudioCache audioCache;
   bool volumeUp = true;
   String lang;
   ThemeData mode ;
+
+   @override
+  void initState() {
+    super.initState();
+    initPlayer();
+  }
+
+  void initPlayer() {
+    audioPlayer = AudioPlayer();
+    audioCache = new AudioCache(fixedPlayer: audioPlayer);
+    audioCache.play("dua-lipa-new-rules-official-music-video.mp3");
+  }
+
   void langCurr(){
     if(Provider.of<NotifierData>(context).currentLang == Locale('en', 'US')){
       lang ="uk";
@@ -200,6 +217,7 @@ class _DialogSettingState extends State<DialogSetting> {
                       onTap: () {
                         setState(() {
                           volumeUp = false;
+                          audioPlayer.stop();
                         });
                       },
                       child: SoundCircular(
@@ -208,7 +226,8 @@ class _DialogSettingState extends State<DialogSetting> {
                   GestureDetector(
                       onTap: () {
                         setState(() {
-                          volumeUp = true;
+                          volumeUp = true; 
+                          audioCache.play("dua-lipa-new-rules-official-music-video.mp3");
                         });
                       },
                       child: SoundCircular(
