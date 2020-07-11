@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:fruits_vegetables/daoData/AppLocalizations.dart';
 import 'package:fruits_vegetables/daoData/notifierData.dart';
 import 'package:fruits_vegetables/score.dart';
 import 'package:provider/provider.dart';
@@ -373,7 +374,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                     padding: const EdgeInsets.only(
                                         top: 30, left: 20),
                                     child: Text(
-                                      "Lettre is: " + widget.lettre,
+                                      AppLocalizations.of(context).translate("letterIs") + " " + widget.lettre,
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 25,
@@ -616,7 +617,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                           shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(5.0)),
                           color: widget.color,
-                          child: Text('Terminer',
+                          child: Text(AppLocalizations.of(context).translate("finish_playing"),
                               style: Theme.of(context).textTheme.button),
                           onPressed: () {
                             timer.cancel();

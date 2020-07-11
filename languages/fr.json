@@ -1,5 +1,14 @@
 {
     "level_1": "Niveau Facile",
     "level_2": "Niveau Moyen",
-    "level_3": "Niveau Difficile"
+    "level_3": "Niveau Difficile",
+    "sound": "Activer le son",
+    "language": "Choisir la langue",
+    "theme": "Choisir le thème",
+    "start_playing": "Commencer",
+    "finish_playing": "Terminer",
+    "letterIs": "la lettre est",
+    "yourScore": "le score est",
+    "replay": "Rejouer",
+    "select_level": "Choisir un niveau"
 }

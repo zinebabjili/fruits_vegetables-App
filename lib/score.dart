@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fruits_vegetables/daoData/AppLocalizations.dart';
 import 'package:fruits_vegetables/daoData/notifierData.dart';
 import 'package:fruits_vegetables/level.dart';
 import 'package:provider/provider.dart';
@@ -117,7 +118,7 @@ class _ScoreState extends State<Score> {
               ),
               //title score
               Text(
-                "Votre Score",
+                AppLocalizations.of(context).translate("yourScore"),
                 style: TextStyle(
                   fontFamily: 'OpenSans-Bold',
                   fontSize: 40,
@@ -180,7 +181,7 @@ class _ScoreState extends State<Score> {
                   shape: new RoundedRectangleBorder(
                       borderRadius: new BorderRadius.circular(5.0)),
                   color: widget.color,
-                  child: Text('Rejouer',
+                  child: Text(AppLocalizations.of(context).translate("replay"),
                       style: Theme.of(context).textTheme.button),
                   onPressed: () {
                     Navigator.of(context).push(
@@ -197,7 +198,7 @@ class _ScoreState extends State<Score> {
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(5.0)),
                 textColor: widget.color,
-                child: Text('Choisir Un Niveau'),
+                child: Text(AppLocalizations.of(context).translate("select_level")),
                 borderSide: BorderSide(
                     color: widget.color, style: BorderStyle.solid, width: 2),
                 onPressed: () {

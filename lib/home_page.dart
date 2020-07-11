@@ -188,7 +188,7 @@ class _DialogSettingState extends State<DialogSetting> {
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(top: 5.0),
-              child: Text('Game Sounds'),
+              child: Text(AppLocalizations.of(context).translate("sound")),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -219,7 +219,7 @@ class _DialogSettingState extends State<DialogSetting> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5.0),
-              child: Text('Game Languages'),
+              child: Text(AppLocalizations.of(context).translate("language")),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
@@ -250,7 +250,7 @@ class _DialogSettingState extends State<DialogSetting> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 5.0),
-              child: Text('Game Theme'),
+              child: Text(AppLocalizations.of(context).translate("theme")),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),

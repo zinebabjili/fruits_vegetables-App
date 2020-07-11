@@ -89,7 +89,7 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
                       angle: _angle),
                   _buildGo(),
                   _buildResult(_value),
-                  _buildButton(_value),
+                  _buildButton(_value,context),
                   _buildText(),
                   _buildBtnBack()
                 ],
@@ -179,7 +179,7 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
     );
   }
 
-  _buildButton(_value) {
+  _buildButton(_value,contextt) {
     // var _index = _calIndex(_value * _angle + _current);
     // String _asset = _items[_index].alphabet;
     if (Provider.of<NotifierData>(context, listen: false).gameStarted.lettre == "" ) {
@@ -190,7 +190,7 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
           child: RaisedButton(
               color: widget.color,
               child:
-                  Text('Commencer', style: Theme.of(context).textTheme.button),
+                  Text(AppLocalizations.of(contextt).translate("start_playing"), style: Theme.of(context).textTheme.button),
               onPressed: null),
         ),
       );
@@ -205,7 +205,7 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
               alignment: Alignment.bottomCenter,
               child: RaisedButton(
                   color: widget.color,
-                  child: Text('Commencer',
+                  child: Text(AppLocalizations.of(contextt).translate("start_playing"),
                       style: Theme.of(context).textTheme.button),
                   onPressed: () {
                     if (widget.level == "Facile") {

@@ -1,5 +1,15 @@
 {
     "level_1": "Easy Level",
     "level_2": "Medium Level",
-    "level_3": "Difficult Level"
+    "level_3": "Difficult Level",
+    "sound": "Enable sound",
+    "language": "Select language",
+    "theme": "Choose theme",
+    "start_playing": "Start",
+    "finish_playing": "Terminate",
+    "letterIs": "the letter is",
+    "yourScore": "The score is",
+    "replay": "Play again",
+    "select_level": "Select a level"
+
 }
