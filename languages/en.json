@@ -10,6 +10,7 @@
     "letterIs": "the letter is",
     "yourScore": "The score is",
     "replay": "Play again",
-    "select_level": "Select a level"
+    "select_level": "Select a level",
+    "loading": "Loading ..."
 
 }

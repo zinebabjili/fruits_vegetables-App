@@ -215,9 +215,7 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
                     } else {
                       smrGame.setGameInitialDATA(3);
                     }
-
                     showPost(context);
-                    
                   }),
             ),
           );

@@ -10,5 +10,6 @@
     "letterIs": "la lettre est",
     "yourScore": "le score est",
     "replay": "Rejouer",
-    "select_level": "Choisir un niveau"
+    "select_level": "Choisir un niveau",
+    "loading": "Chargement ..."
 }
