@@ -9,9 +9,23 @@ import 'GestionTheme/AppTheme.dart';
 import 'level.dart';
 
 // ignore: camel_case_types
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  
   @override
   Widget build(BuildContext context) {
+    if(Provider.of<NotifierData>(context, listen: false).musicrun == false){
+      Provider.of<NotifierData>(context, listen: false).volumeUp = true;
+      Provider.of<NotifierData>(context, listen: false).audioPlayer = AudioPlayer();
+      Provider.of<NotifierData>(context, listen: false).audioCache = new AudioCache(fixedPlayer: Provider.of<NotifierData>(context, listen: false).audioPlayer);
+      Provider.of<NotifierData>(context, listen: false).audioCache.play("dua-lipa-new-rules-official-music-video.mp3");
+      Provider.of<NotifierData>(context, listen: false).setTrueRunmusic();
+    }
+
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -167,23 +181,23 @@ class DialogSetting extends StatefulWidget {
 }
 
 class _DialogSettingState extends State<DialogSetting> {
-  AudioPlayer audioPlayer;
-  AudioCache audioCache;
-  bool volumeUp = true;
+  // AudioPlayer audioPlayer;
+  // AudioCache audioCache;
+  // bool volumeUp = true;
   String lang;
   ThemeData mode ;
 
    @override
   void initState() {
     super.initState();
-    initPlayer();
+    // initPlayer();
   }
 
-  void initPlayer() {
-    audioPlayer = AudioPlayer();
-    audioCache = new AudioCache(fixedPlayer: audioPlayer);
-    audioCache.play("dua-lipa-new-rules-official-music-video.mp3");
-  }
+  // void initPlayer() {
+  //   audioPlayer = AudioPlayer();
+  //   audioCache = new AudioCache(fixedPlayer: audioPlayer);
+  //   audioCache.play("dua-lipa-new-rules-official-music-video.mp3");
+  // }
 
   void langCurr(){
     if(Provider.of<NotifierData>(context).currentLang == Locale('en', 'US')){
@@ -216,23 +230,23 @@ class _DialogSettingState extends State<DialogSetting> {
                   GestureDetector(
                       onTap: () {
                         setState(() {
-                          volumeUp = false;
-                          audioPlayer.stop();
+                          Provider.of<NotifierData>(context, listen: false).volumeUp = false;
+                          Provider.of<NotifierData>(context, listen: false).audioPlayer.stop();
                         });
                       },
                       child: SoundCircular(
                           iconData: Icons.volume_off,
-                          color: !volumeUp ? Colors.black : Colors.grey)),
+                          color: !Provider.of<NotifierData>(context, listen: false).volumeUp ? Colors.black : Colors.grey)),
                   GestureDetector(
                       onTap: () {
                         setState(() {
-                          volumeUp = true; 
-                          audioCache.play("dua-lipa-new-rules-official-music-video.mp3");
+                          Provider.of<NotifierData>(context, listen: false).volumeUp = true; 
+                          Provider.of<NotifierData>(context, listen: false).audioCache.play("dua-lipa-new-rules-official-music-video.mp3");
                         });
                       },
                       child: SoundCircular(
                           iconData: Icons.volume_up,
-                          color: volumeUp ? Colors.black : Colors.grey))
+                          color: Provider.of<NotifierData>(context, listen: false).volumeUp ? Colors.black : Colors.grey))
                 ],
               ),
             ),

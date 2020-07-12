@@ -1,3 +1,5 @@
+import 'package:audioplayers/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fruits_vegetables/GestionTheme/AppTheme.dart';
@@ -16,6 +18,16 @@ class NotifierData with ChangeNotifier {
   Game gameStarted;
   ThemeData currentTheme = AppTheme.lightTheme;
   Locale currentLang = Locale('fr', '');
+
+  AudioPlayer audioPlayer;
+  AudioCache audioCache;
+  bool volumeUp ;
+  bool musicrun = false;
+
+  void setTrueRunmusic(){
+    this.musicrun = true;
+  }
+
 
   changeTheme(typeoftheme){
     if(typeoftheme == 'light'){
