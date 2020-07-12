@@ -53,6 +53,7 @@ flutter:
     - assets/json/jobs-data.json
     - languages/
     - assets/dua-lipa-new-rules-official-music-video.mp3
+    - assets/got.mp3
     # - assets/img/signs.jpg
     # - assets/img/Animal.jpg
     # - assets/img/Capital.jpg

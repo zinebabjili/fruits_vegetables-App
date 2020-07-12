@@ -22,7 +22,8 @@ class _HomePageState extends State<HomePage> {
       Provider.of<NotifierData>(context, listen: false).volumeUp = true;
       Provider.of<NotifierData>(context, listen: false).audioPlayer = AudioPlayer();
       Provider.of<NotifierData>(context, listen: false).audioCache = new AudioCache(fixedPlayer: Provider.of<NotifierData>(context, listen: false).audioPlayer);
-      Provider.of<NotifierData>(context, listen: false).audioCache.play("dua-lipa-new-rules-official-music-video.mp3");
+      // Provider.of<NotifierData>(context, listen: false).audioCache.play("dua-lipa-new-rules-official-music-video.mp3");
+      Provider.of<NotifierData>(context, listen: false).audioCache.play("got.mp3");
       Provider.of<NotifierData>(context, listen: false).setTrueRunmusic();
     }
 
@@ -241,7 +242,7 @@ class _DialogSettingState extends State<DialogSetting> {
                       onTap: () {
                         setState(() {
                           Provider.of<NotifierData>(context, listen: false).volumeUp = true; 
-                          Provider.of<NotifierData>(context, listen: false).audioCache.play("dua-lipa-new-rules-official-music-video.mp3");
+                          Provider.of<NotifierData>(context, listen: false).audioCache.play("got.mp3");
                         });
                       },
                       child: SoundCircular(
