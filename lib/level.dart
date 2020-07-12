@@ -78,7 +78,7 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
             builder: (context, child) {
               final _value = _ani.value;
               final _angle = _value * this._angle;
-              // print("Angle" + _angle.toString());
+              // //print("Angle" + _angle.toString());
               return Stack(
                 alignment: Alignment.center,
                 children: <Widget>[
@@ -198,7 +198,7 @@ class _EasyLevelState extends State<EasyLevel> with SingleTickerProviderStateMix
       return Consumer<NotifierData>(builder: (_, smrGame, __) {
         if (true) 
         {
-          // print("ITS TRUE");
+          // //print("ITS TRUE");
           return Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0),
             child: Align(

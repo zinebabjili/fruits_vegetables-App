@@ -26,7 +26,7 @@ class _ScoreState extends State<Score> {
   @override
   void initState() {
     super.initState();
-    print("result is " + reponse.toString());
+    //print("result is " + reponse.toString());
     _listSuggestions = ["Loading some ansewrs you missed ..."];
 
   }
@@ -41,7 +41,7 @@ class _ScoreState extends State<Score> {
         .then((value) {
       if (value != null) {
         _listSuggestions = value;
-        print(_listSuggestions);
+        //print(_listSuggestions);
       }
     });
     return FutureBuilder<List<String>>(

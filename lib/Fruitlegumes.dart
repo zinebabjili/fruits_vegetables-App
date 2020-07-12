@@ -575,21 +575,21 @@ class _FruitlegumesState extends State<Fruitlegumes> {
                                         : Colors.white70),
                                 onChanged: (value) async {
                                   widget.isChanged = true;
-                                  print(widget.isChanged);
-                                  // print("i is $i and value is $value");
+                                  // //print(widget.isChanged);
+                                  // //print("i is $i and value is $value");
                                   listOfElements[i].input = value;
                                   await smrGame.checkSomething(i, value).then((v) {
                                     if (v == true) {
-                                      print("v is $v");
+                                      // //print("v is $v");
                                       listOfElements[i].isDone = true;
                                     } else {
-                                      print("v is $v");
+                                      // //print("v is $v");
                                       listOfElements[i].isDone = false;
                                     }
                                     widget.isChanged = false;
                                   });
                                   
-                                  print(widget.isChanged);
+                                  // //print(widget.isChanged);
 
                                 },
                               ),
@@ -667,7 +667,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
       }
 
       // for (var i = 0; i < reponse.length; i++) {
-      //   // print("hey" + reponse[i]);
+      //   // //print("hey" + reponse[i]);
       // }
       if (i < 5) {
         ++i;
@@ -688,7 +688,7 @@ class _FruitlegumesState extends State<Fruitlegumes> {
       }
 
       // for (var i = 0; i < reponse.length; i++) {
-      //   print("hey" + reponse[i]);
+      //   //print("hey" + reponse[i]);
       // }
 
       if (i > 0) {

@@ -49,13 +49,13 @@ class NotifierData with ChangeNotifier {
 
   void getStarted(int i) {
     if (i == 1) {
-      print("LeTS PLAY E");
+      //print("LeTS PLAY E");
       gameStarted = new Game("easy", 5, "");
     } else if (i == 2) {
-      print("LeTS PLAY M");
+      //print("LeTS PLAY M");
       gameStarted = new Game("medium", 3, "");
     } else if (i == 3) {
-      print("LeTS PLAY D");
+      //print("LeTS PLAY D");
       gameStarted = new Game("difficult", 1, "");
     }
   }
@@ -151,7 +151,7 @@ class NotifierData with ChangeNotifier {
     if(index == 0){
       bool state = false;
       await repo.isCountryCorrect(label).then((value) => {
-        // print(value),
+        // //print(value),
         state = value,
       });
       return state;
@@ -164,7 +164,7 @@ class NotifierData with ChangeNotifier {
     }else if(index == 2){
       bool state = false;
       await repo.isCapitalCorrect(label).then((value) => {
-        // print(value),
+        // //print(value),
         state = value,
       });
       return state;
@@ -176,7 +176,7 @@ class NotifierData with ChangeNotifier {
       return false;
     }else if(index == 4){
       List<String> animalss = gameStarted.Elements[index].words;
-      // print(animalss);
+      // //print(animalss);
       for(int i = 0; i< animalss.length; i++){
         if(animalss[i] == label.toLowerCase()) return true;
       }
@@ -184,7 +184,7 @@ class NotifierData with ChangeNotifier {
     }else if(index == 5){
       bool state = false;
       await repo.isFruitCorrect(label).then((value) => {
-        // print(value),
+        // //print(value),
         state = value,
       });
       return state;
@@ -205,7 +205,7 @@ class NotifierData with ChangeNotifier {
     if(gameStarted.Elements[0].isDone == false){
       await repo.getRandomCountryByLettre(lettre).then((value) {
         if(value != null){
-          print(value);
+          //print(value);
           list.add(gameStarted.Elements[0].label + " : " +  value);
 
         }
@@ -214,7 +214,7 @@ class NotifierData with ChangeNotifier {
     if(gameStarted.Elements[1].isDone == false){
       await repo.getRandomLegumeByLettre(lettre).then((value) {
         if(value != null){
-          print(value);
+          //print(value);
 
           list.add(gameStarted.Elements[1].label + " : " +  value);
 
@@ -224,7 +224,7 @@ class NotifierData with ChangeNotifier {
     if(gameStarted.Elements[2].isDone == false){
       await repo.getRandomCapitalByLettre(lettre).then((value) {
         if(value != null){
-          print(value);
+          //print(value);
 
           list.add(gameStarted.Elements[2].label + " : " +  value);
 
@@ -234,7 +234,7 @@ class NotifierData with ChangeNotifier {
     if(gameStarted.Elements[3].isDone == false){
       await repo.getRandomJobeByLettre(lettre).then((value) {
         if(value != null){
-          print(value);
+          //print(value);
 
           list.add(gameStarted.Elements[3].label + " : " +  value);
 
@@ -244,7 +244,7 @@ class NotifierData with ChangeNotifier {
     if(gameStarted.Elements[4].isDone == false){
       await repo.getRandomAnimaleByLettre(lettre).then((value) {
         if(value != null){
-          print(value);
+          //print(value);
 
           list.add(gameStarted.Elements[4].label + " : " +  value);
         }
@@ -257,7 +257,7 @@ class NotifierData with ChangeNotifier {
       return listVc;
     }
     // if(gameStarted.Elements[5].isDone == false){
-    //   print(gameStarted.Elements[5].label);
+    //   //print(gameStarted.Elements[5].label);
     //   await repo.getRandomAnimaleByLettre(lettre).then((value) {
     //     if(value != null){
     //       list.add(value);
