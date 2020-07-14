@@ -44,6 +44,8 @@ class _FruitlegumesState extends State<Fruitlegumes> {
   int second = 00;
   Timer timer;
 
+  var newProvider;
+
   @override
   void initState() {
     super.initState();
@@ -65,38 +67,14 @@ class _FruitlegumesState extends State<Fruitlegumes> {
     super.dispose();
   }
 
-  void startTimer() {
-    timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
-      setState(() {
-        if (minuit < 1 && second < 1 || getResult(null) == 6) {
-          timer.cancel();
-          Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (BuildContext context) => Score(
-                  color: color,
-                  level: level,
-                  reponse: getResult(null),
-                ),
-              ));
-          timer.cancel();
-        } else {
-          if (second == 0) {
-            minuit--;
-            second = 60;
-          }
-          second--;
-        }
-      });
-    });
-  }
-
-  @override
+    @override
   Widget build(BuildContext context) {
     // this.champs = [Provider.of<NotifierData>(context, listen: false).gameStarted.animal.label];
 
     var listOfElements =
         Provider.of<NotifierData>(context, listen: false).gameStarted.Elements;
+
+    newProvider = Provider.of<NotifierData>(context);
 
     if (listOfElements != null) {
       return Scaffold(
@@ -663,11 +641,38 @@ class _FruitlegumesState extends State<Fruitlegumes> {
     }
   }
 
+  void startTimer() {
+    timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
+      setState(() {
+        if (minuit < 1 && second < 1 || getResult(null) == 6) {
+          timer.cancel();
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (BuildContext context) => Score(
+                  color: color,
+                  level: level,
+                  reponse: getResult(null),
+                ),
+              ));
+          timer.cancel();
+        } else {
+          if (second == 0) {
+            minuit--;
+            second = 60;
+          }
+          second--;
+        }
+      });
+    });
+  }
+
   int getResult(List<dynamic> lili) {
     if (lili == null) {
-      lili = Provider.of<NotifierData>(context, listen: false)
-          .gameStarted
-          .Elements;
+      // lili = Provider.of<NotifierData>(context)
+      //     .gameStarted
+      //     .Elements;
+      lili = newProvider.gameStarted.Elements;
     }
     if (lili == null) {
       return 0;
